@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="60">
+ <editorsettings>
+  <export target="C:/Users/Виктор/Desktop/desert.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="desert.tsx"/>
+ <layer id="1" name="Ground" width="40" height="40" opacity="0.9">
+  <data encoding="base64" compression="zlib">
+   eJzVmNtuwjAMQLPxsAvS2EUaY2hd2aWwMUr//+vmaI1qWW7spElXHo5oUdoe7NgJLYwxRUZugAVwm/k5MdSM3+sEvE4lfjZWj8ASeJqAD8cZcA7MiHeOZ62A5wDWwBVwDcx77nlEDPXbAG8BvAt+Q7x2Hr8P4Bv4TOCXMr8b9FxNPCW/FFQT9GuIF/X7MX/z/zCyH51z9FyKF52XfX4hdcHVwY7Ezx1LfjSuPr+QuG3JufMJjV9sfrW+1JPy1eZPy17p5+Oi5dJ0a5GPmXKc48Xjp4nbwnT7C/dbfcyV47jr8Pq4Ro4+z6Xp9hd3wL3Ag3Icd52dv7bGbX27HhpbI6FUhu+ZtL5sjR8UfqXh9zkxnhVBU197xX3LhHGTHGP2ZkO8tH41yq3UL/H6Ezo/h+ZX42edmnZsn1+NSFUfx8R+3DF37oPO6zH8hqDxw/sLKb8F80m/4+Byq/WjsfTFz+fUN9YX7xi/RplfLqbccWo/qX61fpr4xezNUs39/yJl/WopM3jE9vQQbB+w9eLW8VTrc0ispPdGdn3G/72k63LFi8vxqnXD+1uu/4zhx4HfDeD1JcYhhzftT67/uHnJPTPEQxqruZdzGTt3p8wvLxq+hQ==
+  </data>
+ </layer>
+ <objectgroup id="5" name="Collision">
+  <object id="50" x="847" y="654" width="390" height="295"/>
+  <object id="55" x="512" y="577" width="190" height="190">
+   <ellipse/>
+  </object>
+  <object id="56" x="79.257" y="1068.17" width="129.693" height="138.7">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>
