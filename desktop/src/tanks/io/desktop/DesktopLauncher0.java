@@ -13,7 +13,6 @@ public class DesktopLauncher0 {
         config.width = MainGame.WHIDE_SCREEN / 2;
         config.height = MainGame.HIDE_SCREEN / 2;
 
-
         new LwjglApplication(new MainGame(2), config);
     }
 }

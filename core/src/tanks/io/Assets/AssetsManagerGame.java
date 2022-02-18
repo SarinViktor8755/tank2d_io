@@ -5,6 +5,7 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -89,6 +90,8 @@ public class AssetsManagerGame {
         assets.put("bullet.png", Texture.class);
 
         assets.put("iron.png", Texture.class);
+
+        assets.put("de.pack",  TextureAtlas.class);
 
 //        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 //        assets.put("C:\\tank2d\\android\\assets\\map\\desert.tmx", Texture.class);

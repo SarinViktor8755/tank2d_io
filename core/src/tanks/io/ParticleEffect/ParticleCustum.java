@@ -2,6 +2,7 @@ package tanks.io.ParticleEffect;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
@@ -15,10 +16,12 @@ public class ParticleCustum {
     ArrayDeque<PasricalExplosion> pasricalExplosions; // мелкие взрывы
     ArrayDeque<PasricalExplosionBigParameter> pasricalExplosionsBigParam; // большие взрывы
     ArrayDeque<Garbage> pasricalGarbage; // большие взрывы
+    ArrayDeque<Explosion_Death> explosion_Death; // взрыв из тотал анигилейшен
 
     private Texture t;
     private Texture f;
     private Texture iron;
+    private TextureAtlas textureAtlasDeathExplosion; /// атлес текстур взрыва тотала
 
 
 //
@@ -26,19 +29,25 @@ public class ParticleCustum {
 
     GamePlayScreen gps;
 
-    public ParticleCustum(GamePlayScreen gps, Texture t, Texture f, Texture iron) {
+    public ParticleCustum(GamePlayScreen gps, Texture t, Texture f, Texture iron,TextureAtlas de) {
         this.t = t;
         this.f = f;
         this.iron = iron;
+        this.textureAtlasDeathExplosion = de;
 
         this.particleDeque = new ArrayDeque<>();
         this.pasricalExplosions = new ArrayDeque<>();
         this.pasricalExplosionsBigParam = new ArrayDeque<>();
         this.pasricalGarbage = new ArrayDeque<>();
+        this.explosion_Death = new ArrayDeque<>();
+
+
+
 
         for (int i = 0; i < 350; i++) {
             this.particleDeque.add(new ParticleSmoke());
         }
+
         for (int i = 0; i < 8; i++) {
             this.pasricalExplosions.add(new PasricalExplosion());
         }
@@ -49,6 +58,10 @@ public class ParticleCustum {
 
         for (int i = 0; i < 450; i++) {
             this.pasricalGarbage.add(new Garbage());
+        }
+
+        for (int i = 0; i < 5; i++) {
+            this.explosion_Death.add(new Explosion_Death());
         }
 
 
@@ -96,7 +109,6 @@ public class ParticleCustum {
             u.update();
             u.setAlpha(MathUtils.clamp(u.getTime_life(), -1, .7f));
             sb.setColor(u.getColor());
-
             sb.draw(t,
                     u.getPosition().x - t.getWidth() / 2, u.getPosition().y - t.getHeight() / 2,
                     t.getWidth() / 2, t.getHeight() / 2,
@@ -145,6 +157,23 @@ public class ParticleCustum {
                     0, 0,
                     f.getWidth(), f.getHeight(),
                     false, false);
+        }
+
+
+        for (Explosion_Death fd : explosion_Death) {  // смерть большие
+            if (!fd.isLife()) continue;
+            fd.update(this);
+//            sb.setColor(1, 1, 1, fd.getAlpha());
+//            //System.out.println(fd.getAlpha());
+//            sb.draw(f,
+//                    fd.getPosition().x - t.getWidth() / 2, fd.getPosition().y - t.getHeight() / 2,
+//                    f.getWidth() / 2, f.getHeight() / 2,
+//                    f.getWidth(), f.getHeight(),
+//                    fd.getScale(), fd.getScale(),
+//                    fd.getRot(),
+//                    0, 0,
+//                    f.getWidth(), f.getHeight(),
+//                    false, false);
         }
 
 
@@ -209,6 +238,14 @@ public class ParticleCustum {
         PasricalExplosion a = this.pasricalExplosions.pollLast();
         a.setParameters(timeLife, x, y);
         this.pasricalExplosions.offerFirst(a);
+    }
+
+    public void addPasricalDeath(float x, float y) {
+        if (!checkViseble(x, y)) return;
+        Explosion_Death a = this.explosion_Death.pollLast();
+        a.setParameters(x, y);
+        this.explosion_Death.offerFirst(a);
+
     }
 
     public void addGarbage(float x, float y) {

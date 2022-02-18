@@ -87,6 +87,8 @@ public class ParticleSmoke {
         return time_life;
     }
 
+
+
     public void setTime_life(int i) {
         this.time_life = i;
     }
