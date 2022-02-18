@@ -24,12 +24,10 @@ public class ParticleCustum {
     private TextureAtlas textureAtlasDeathExplosion; /// атлес текстур взрыва тотала
 
 
-//
-//    int k, i;
 
     GamePlayScreen gps;
 
-    public ParticleCustum(GamePlayScreen gps, Texture t, Texture f, Texture iron,TextureAtlas de) {
+    public ParticleCustum(GamePlayScreen gps, Texture t, Texture f, Texture iron, TextureAtlas de) {
         this.t = t;
         this.f = f;
         this.iron = iron;
@@ -40,8 +38,6 @@ public class ParticleCustum {
         this.pasricalExplosionsBigParam = new ArrayDeque<>();
         this.pasricalGarbage = new ArrayDeque<>();
         this.explosion_Death = new ArrayDeque<>();
-
-
 
 
         for (int i = 0; i < 350; i++) {
@@ -160,20 +156,22 @@ public class ParticleCustum {
         }
 
 
-        for (Explosion_Death fd : explosion_Death) {  // смерть большие
+        for (Explosion_Death fd : explosion_Death) {  // смерть большие (тотала)
+            if (MathUtils.randomBoolean(0.22f)){}
+                this.addPasricalDeath(MathUtils.random(100, 300), MathUtils.random(100, 300));
+
+
+            System.out.println(fd.getNameTextureRegion());
+
             if (!fd.isLife()) continue;
             fd.update(this);
-//            sb.setColor(1, 1, 1, fd.getAlpha());
-//            //System.out.println(fd.getAlpha());
-//            sb.draw(f,
-//                    fd.getPosition().x - t.getWidth() / 2, fd.getPosition().y - t.getHeight() / 2,
-//                    f.getWidth() / 2, f.getHeight() / 2,
-//                    f.getWidth(), f.getHeight(),
-//                    fd.getScale(), fd.getScale(),
-//                    fd.getRot(),
-//                    0, 0,
-//                    f.getWidth(), f.getHeight(),
-//                    false, false);
+            sb.setColor(1, 1, 1, 1);
+
+            sb.draw(textureAtlasDeathExplosion.findRegion("ed4"),
+                    fd.getPosition().x, fd.getPosition().y
+
+            );
+
         }
 
 
@@ -245,7 +243,6 @@ public class ParticleCustum {
         Explosion_Death a = this.explosion_Death.pollLast();
         a.setParameters(x, y);
         this.explosion_Death.offerFirst(a);
-
     }
 
     public void addGarbage(float x, float y) {
@@ -265,7 +262,7 @@ public class ParticleCustum {
 
         for (int i = 0; i < 2; i++) {
             f = this.pasricalExplosionsBigParam.pollLast();
-            f.setParameters(x + MathUtils.random(-40,+40), y + MathUtils.random(-40,+40));
+            f.setParameters(x + MathUtils.random(-40, +40), y + MathUtils.random(-40, +40));
             this.pasricalExplosionsBigParam.offerFirst(f);
         }
 
@@ -281,4 +278,6 @@ public class ParticleCustum {
 
     public void addParticalsSmoke(int random, float v, float v1) {
     }
+
+
 }
