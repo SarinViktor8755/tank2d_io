@@ -24,7 +24,6 @@ public class ParticleCustum {
     private TextureAtlas textureAtlasDeathExplosion; /// атлес текстур взрыва тотала
 
 
-
     GamePlayScreen gps;
 
     public ParticleCustum(GamePlayScreen gps, Texture t, Texture f, Texture iron, TextureAtlas de) {
@@ -37,8 +36,14 @@ public class ParticleCustum {
         this.pasricalExplosions = new ArrayDeque<>();
         this.pasricalExplosionsBigParam = new ArrayDeque<>();
         this.pasricalGarbage = new ArrayDeque<>();
-        this.explosion_Death = new ArrayDeque<>();
+        this.explosion_Death = new ArrayDeque<>(); ///  текстур взрыва тотала
 
+
+        for (int i = 0; i < 7; i++) {
+            Explosion_Death ed = new Explosion_Death();
+          //  ed.setParameters(-50, -50);
+            this.explosion_Death.add(ed);
+        }
 
         for (int i = 0; i < 350; i++) {
             this.particleDeque.add(new ParticleSmoke());
@@ -54,10 +59,6 @@ public class ParticleCustum {
 
         for (int i = 0; i < 450; i++) {
             this.pasricalGarbage.add(new Garbage());
-        }
-
-        for (int i = 0; i < 5; i++) {
-            this.explosion_Death.add(new Explosion_Death());
         }
 
 
@@ -98,6 +99,10 @@ public class ParticleCustum {
 //        i = 0;
 //        k = 0;
 
+        if (MathUtils.randomBoolean(0.05f)) {
+            this.addPasricalDeath(gps.getTank().getPosition().x + MathUtils.random(-300,500) , gps.getTank().getPosition().y);
+        }
+
 
         for (ParticleSmoke u : particleDeque) {
             if (!u.isLife()) continue;
@@ -132,11 +137,7 @@ public class ParticleCustum {
                     0, 0,
                     f.getWidth(), f.getHeight(),
                     false, false);
-//            i++;
-//            if (VectorUtils.getLen2(gps.getCameraGame().getCameraPosition().x, gps.getCameraGame().getCameraPosition().y, u.getPosition().x, u.getPosition().y) > 150_000)
-//                u.setTime_life(0);
-            //5   if (checkViseble(u.getPosition().x, u.getPosition().y)) u.setTime_life(0);
-            //  if())
+
         }
 
         for (PasricalExplosionBigParameter fd : pasricalExplosionsBigParam) {  // смерть большие
@@ -156,21 +157,49 @@ public class ParticleCustum {
         }
 
 
-        for (Explosion_Death fd : explosion_Death) {  // смерть большие (тотала)
-            if (MathUtils.randomBoolean(0.22f)){}
-                this.addPasricalDeath(MathUtils.random(100, 300), MathUtils.random(100, 300));
+//        for (Explosion_Death fdd : explosion_Death) {  // смерть большие (тотала)
+//
+//            if (MathUtils.randomBoolean(0.08f)) {
+//            }
+//            this.addPasricalDeath(gps.getTank().getPosition().x, gps.getTank().getPosition().y);
+//////
+////
+////            System.out.println(fd.getNameTextureRegion());
+////
+//            if (!fdd.isLife()) continue;
+//            fdd.update(this);
+//            sb.setColor(1, 1, 1, 1);
+////
+//            sb.draw(
+//                    //textureAtlasDeathExplosion.findRegion(fd.getNameTextureRegion()),
+//                    f,
+//                    fdd.getPosition().x, fdd.getPosition().y,
+//                    150, 150
+//
+//            );
+//        }
+//////////////////////
 
 
-            System.out.println(fd.getNameTextureRegion());
 
-            if (!fd.isLife()) continue;
-            fd.update(this);
-            sb.setColor(1, 1, 1, 1);
 
-            sb.draw(textureAtlasDeathExplosion.findRegion("ed4"),
-                    fd.getPosition().x, fd.getPosition().y
 
+        for (Explosion_Death ed : explosion_Death) {
+            if (!ed.isLife()) continue;
+            ed.update();
+            /////////////////
+            TextureAtlas.AtlasRegion tex =  textureAtlasDeathExplosion.findRegion(ed.getNameTextureRegion());
+            float xw = MathUtils.map(100,0,100,0,tex.getRegionWidth());
+            float yw = MathUtils.map(100,0,100,0,tex.getRegionHeight());
+            /////////////////
+            sb.draw(
+                    tex,
+                    ed.getPosition().x - (tex.getRegionWidth() / 2), ed.getPosition().y - (tex.getRegionHeight() / 2),
+                    xw, yw
             );
+
+            //System.out.println("!!!!  -- !!!!"  + textureAtlasDeathExplosion.findRegion(ed.getNameTextureRegion()).getRegionWidth());
+
 
         }
 

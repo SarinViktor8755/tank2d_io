@@ -20,18 +20,19 @@ public class AssetsManagerGame {
     AssetManager assetManager;
 
     public AssetsManagerGame(AssetManager as) {
-        this.assets = new HashMap<String, Class>(); ;
+        this.assets = new HashMap<String, Class>();
+        ;
         this.assetManager = as;
     }
 
     public final AssetManager loadAllAssetMenu() {
         //GdxNativesLoader.load();
 
-            /////////menu
-            assets.put("menuAsset/wallpaper.png", Texture.class);
-            assets.put("menuAsset/wallpaper1.png", Texture.class);
-            assets.put("menuAsset/pley.png", Texture.class);
-            assets.put("menuAsset/logo.png", Texture.class);
+        /////////menu
+        assets.put("menuAsset/wallpaper.png", Texture.class);
+        assets.put("menuAsset/wallpaper1.png", Texture.class);
+        assets.put("menuAsset/pley.png", Texture.class);
+        assets.put("menuAsset/logo.png", Texture.class);
 
         assets.put("skin/uiskin.json", Skin.class);
 
@@ -42,10 +43,11 @@ public class AssetsManagerGame {
 
     public final AssetManager loadAllAsseGame() {
         //GdxNativesLoader.load();
-
-           assets.put("sound/BSB.ogg", Sound.class);
-         //  assets.put("badlogic.png", Texture.class);
-           assets.put("target.png", Texture.class);
+        assets.put("de.pack", TextureAtlas.class);
+        assets.put("button.pack", TextureAtlas.class);
+        assets.put("sound/BSB.ogg", Sound.class);
+        //  assets.put("badlogic.png", Texture.class);
+        assets.put("target.png", Texture.class);
 
 
 //            assets.put("badlogic.png", Texture.class);
@@ -63,12 +65,6 @@ public class AssetsManagerGame {
         assets.put("trb1.png", Texture.class);
         assets.put("trb2.png", Texture.class);
 
-//////////////////////
-
-//        assets.put("badlogic1.png", Texture.class);
-//
-//        assets.put("badlogicB.png", Texture.class);
-//        assets.put("badlogic1B.png", Texture.class);
 
         assets.put("sled.png", Texture.class);
         //controller
@@ -76,7 +72,7 @@ public class AssetsManagerGame {
         assets.put("flatDark261.png", Texture.class);
 
         //sound
-       // assets.setLoader(TiledMap.class, new TmxMapLoader());
+        // assets.setLoader(TiledMap.class, new TmxMapLoader());
         assets.put("sound/BSB.ogg", Sound.class);
         assets.put("sound/00708.ogg", Sound.class);
         assets.put("sound/bash.ogg", Sound.class);
@@ -91,7 +87,6 @@ public class AssetsManagerGame {
 
         assets.put("iron.png", Texture.class);
 
-        assets.put("de.pack",  TextureAtlas.class);
 
 //        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 //        assets.put("C:\\tank2d\\android\\assets\\map\\desert.tmx", Texture.class);
@@ -102,9 +97,9 @@ public class AssetsManagerGame {
         return assetManager;
     }
 
-    private void loadedAseets(){
+    private void loadedAseets() {
         for (Map.Entry<String, Class> entry : assets.entrySet()) {
-          //  System.out.println(entry.getValue());
+            //  System.out.println(entry.getValue());
             if (assetManager.isLoaded(entry.getKey(), entry.getValue())) continue;
             assetManager.load(entry.getKey(), entry.getValue());
 
@@ -118,7 +113,7 @@ public class AssetsManagerGame {
         return assetManager;
     }
 
-    public float getProgress(AssetManager assetManager){
+    public float getProgress(AssetManager assetManager) {
         return assetManager.getProgress();
     }
 

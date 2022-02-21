@@ -54,7 +54,9 @@ public class GamePlayScreen implements Screen {
         this.cameraGame = new CameraGame(MainGame.WHIDE_SCREEN * 1.2f, MainGame.HIDE_SCREEN * 1.2f, gameSpace.getSizeLocationPixel(), gameSpace.WITH_LOCATION, gameSpace.HEIHT_LOCATION);
         this.cameraGame.jampCameraToPoint(pos.x, pos.y);
 
-        this.controller = new Controller(this, mainGame.getAssetManager().get("flatDark26.png", Texture.class), mainGame.getAssetManager().get("flatDark261.png", Texture.class));
+//        this.controller = new Controller(this, mainGame.getAssetManager().get("flatDark26.png", Texture.class), mainGame.getAssetManager().get("flatDark261.png", Texture.class));
+        this.controller = new Controller(this);
+
         tank = new Tank(this);
 
         bullets = new Bullets(this);

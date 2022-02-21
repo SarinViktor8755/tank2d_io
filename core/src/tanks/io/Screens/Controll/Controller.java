@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -56,9 +58,14 @@ public class Controller {
         return inTuchMove;
     }
 
-    public Controller(GamePlayScreen gsp, Texture a, Texture c) {
-        a.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
-        c.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
+    public Controller(GamePlayScreen gsp) {
+       // gsp.getAssetManager().get("de.pack", TextureAtlas.class);
+
+        TextureRegion a = gsp.getAssetsManagerGame().get("de.pack", TextureAtlas.class).findRegion("b");
+       // a.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
+       // c.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
+        TextureRegion c = gsp.getAssetsManagerGame().get("de.pack", TextureAtlas.class).findRegion("b");
+
         distance = new Vector2();
         inTuchMove = false;
         attackButon = false;

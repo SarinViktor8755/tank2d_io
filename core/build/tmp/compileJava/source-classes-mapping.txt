@@ -61,27 +61,22 @@ tanks/io/Locations/Radspurens.java
  tanks.io.Locations.Radspurens
 tanks/io/ClientApi/StandratPackage.java
  tanks.io.ClientApi.StandratPackage
-tanks/io/Assets/AssetsManagerGame.java
- tanks.io.Assets.AssetsManagerGame
-tanks/io/Units/Tanks/LogikBOT.java
- tanks.io.Units.Tanks.LogikBOT
-tanks/io/MainGame.java
- tanks.io.MainGame
-tanks/io/Screens/MenuScreen.java
- tanks.io.Screens.MenuScreen
- tanks.io.Screens.MenuScreen$1
-tanks/io/ClientApi/MainClient.java
- tanks.io.ClientApi.MainClient
- tanks.io.ClientApi.MainClient$1
- tanks.io.ClientApi.MainClient$1$1
 tanks/io/ParticleEffect/ParticleSmoke.java
  tanks.io.ParticleEffect.ParticleSmoke
+tanks/io/ParticleEffect/Explosion_Death.java
+ tanks.io.ParticleEffect.Explosion_Death
 tanks/io/Units/Tanks/Tank.java
  tanks.io.Units.Tanks.Tank
+tanks/io/Units/Tanks/LogikBOT.java
+ tanks.io.Units.Tanks.LogikBOT
 tanks/io/AudioEngine/AudioEngine.java
  tanks.io.AudioEngine.AudioEngine
 tanks/io/Locations/GameSpace.java
  tanks.io.Locations.GameSpace
+tanks/io/ClientApi/MainClient.java
+ tanks.io.ClientApi.MainClient
+ tanks.io.ClientApi.MainClient$1
+ tanks.io.ClientApi.MainClient$1$1
 tanks/io/ParticleEffect/ParticleCustum.java
  tanks.io.ParticleEffect.ParticleCustum
 tanks/io/Units/Tanks/LogikTank.java
@@ -90,6 +85,8 @@ tanks/io/Units/Bullets.java
  tanks.io.Units.Bullets
 tanks/io/ParticleEffect/PasricalExplosionBigParameter.java
  tanks.io.ParticleEffect.PasricalExplosionBigParameter
+tanks/io/MainGame.java
+ tanks.io.MainGame
 tanks/io/Screens/GamePlayScreen.java
  tanks.io.Screens.GamePlayScreen
 tanks/io/Locations/Collision/MainCollision.java
@@ -99,13 +96,16 @@ tanks/io/Screens/Controll/Controller.java
  tanks.io.Screens.Controll.Controller$1
  tanks.io.Screens.Controll.Controller$2
  tanks.io.Screens.Controll.Controller$3
+tanks/io/Screens/MenuScreen.java
+ tanks.io.Screens.MenuScreen
+ tanks.io.Screens.MenuScreen$1
 tanks/io/Units/Tanks/TanksOther.java
  tanks.io.Units.Tanks.TanksOther
 tanks/io/Locations/LightingBox2D.java
  tanks.io.Locations.LightingBox2D
-tanks/io/ParticleEffect/Explosion_Death.java
- tanks.io.ParticleEffect.Explosion_Death
 tanks/io/Units/Tanks/OpponentsTanks.java
  tanks.io.Units.Tanks.OpponentsTanks
 tanks/io/InputProcessor/InputProcessorPC.java
  tanks.io.InputProcessor.InputProcessorPC
+tanks/io/Assets/AssetsManagerGame.java
+ tanks.io.Assets.AssetsManagerGame
