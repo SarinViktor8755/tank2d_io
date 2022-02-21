@@ -45,6 +45,7 @@ public class AssetsManagerGame {
         //GdxNativesLoader.load();
         assets.put("de.pack", TextureAtlas.class);
         assets.put("button.pack", TextureAtlas.class);
+
         assets.put("sound/BSB.ogg", Sound.class);
         //  assets.put("badlogic.png", Texture.class);
         assets.put("target.png", Texture.class);
@@ -68,8 +69,8 @@ public class AssetsManagerGame {
 
         assets.put("sled.png", Texture.class);
         //controller
-        assets.put("flatDark26.png", Texture.class);
-        assets.put("flatDark261.png", Texture.class);
+//        assets.put("flatDark26.png", Texture.class);
+//        assets.put("flatDark261.png", Texture.class);
 
         //sound
         // assets.setLoader(TiledMap.class, new TmxMapLoader());

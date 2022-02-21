@@ -61,11 +61,6 @@ public class Controller {
     public Controller(GamePlayScreen gsp) {
        // gsp.getAssetManager().get("de.pack", TextureAtlas.class);
 
-        TextureRegion a = gsp.getAssetsManagerGame().get("de.pack", TextureAtlas.class).findRegion("b");
-       // a.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
-       // c.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Linear);
-        TextureRegion c = gsp.getAssetsManagerGame().get("de.pack", TextureAtlas.class).findRegion("b");
-
         distance = new Vector2();
         inTuchMove = false;
         attackButon = false;
@@ -87,10 +82,12 @@ public class Controller {
         final float sw = MainGame.WHIDE_SCREEN;
         final float sh = MainGame.HIDE_SCREEN;
 
+/////////////////
+        final Image stick = new Image(gsp.getAssetsManagerGame().get("button.pack", TextureAtlas.class).findRegion("b"));
+        pointStick = new Image(gsp.getAssetsManagerGame().get("button.pack", TextureAtlas.class).findRegion("stick"));
+////////////////
+        System.out.println(pointStick.getImageHeight()+ "  ==== ___ ");
 
-        final Image stick = new Image(a);
-
-        pointStick = new Image(c);
         pointStick.setSize(90, 90);
 
         stick.addListener(new InputListener() {
@@ -121,7 +118,7 @@ public class Controller {
         });
 
 
-        final Image attacButton = new Image(a);
+        final Image attacButton = new Image(gsp.getAssetsManagerGame().get("button.pack", TextureAtlas.class).findRegion("ba"));
         attacButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -141,7 +138,7 @@ public class Controller {
             }
         });
 ////////////////////////////////////////// changingGoal
-        changingGoal = new Image(a);
+        changingGoal = new Image(gsp.getAssetsManagerGame().get("button.pack", TextureAtlas.class).findRegion("br"));
         changingGoal.setSize(90, 90);
         changingGoal.addListener(new InputListener() {
             @Override
