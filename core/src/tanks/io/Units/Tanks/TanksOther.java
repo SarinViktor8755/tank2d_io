@@ -160,6 +160,11 @@ public class TanksOther { /// много танков )))
         updateClienOtherTank(); /// обновление других танков с сервреа (позиция)
 
         OpponentsTanks t;
+
+        if(MathUtils.randomBoolean(.05f)) {
+            System.out.println("=================------------================");
+            System.out.println(listOpponents);}
+
         for (Map.Entry<Integer, OpponentsTanks> tank : this.listOpponents.entrySet()) {
             t = tank.getValue();
             updateColor(t, Gdx.graphics.getDeltaTime());

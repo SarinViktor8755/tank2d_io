@@ -70,7 +70,7 @@ public class IndexBot {
     }
 
     public void updateBot(float deltaTime) {
-        if (botsSizeList() < 90) addBot();
+        if (botsSizeList() < 5) addBot(); // обавленеи ботов
 
         DBBot dbBot;
         HashMap<Integer, Player> allpl = mainGame.getListplayerUpdate();

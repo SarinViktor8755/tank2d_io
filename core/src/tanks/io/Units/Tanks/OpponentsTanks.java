@@ -208,9 +208,10 @@ public class OpponentsTanks { // ОДИН ТАНК
 
     @Override
     public String toString() {
-        return "OpponentsTanks{" +
-                "nomder=" + nomder +
-                ", nikPlayer='" + nikPlayer + '\'' +
+        return "{" +
+                "color=" + color +
+                ", hp=" + hp +
+                ", nik='" + nikPlayer + '\'' +
                 '}';
     }
 

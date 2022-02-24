@@ -62,9 +62,9 @@ public class OutMassegeCollection {
         m.tip = Heading_type.HP_PLAYER;
         m.p1 = nomPlayer;
         m.p2 = HP;
-        System.out.println(m);
+        //System.out.println(m);
         this.createMessageDorEveryone(m);
-        System.out.println("send HP player");
+       // System.out.println("send HP player");
     }
 
     public void sendPlayerHP(int nomPlayer, float HP) {
@@ -82,7 +82,9 @@ public class OutMassegeCollection {
         m.p3 = p.command;
        // m.p4 = p.hp;
         m.p6 = p.id;
-        m.textM = p.getNikName();
+        m.textM = p.getNikName()+"!!!!";
+        System.out.println(m.textM);
+
         this.addMasssage(fromidUser, m);
     }
 

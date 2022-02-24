@@ -37,6 +37,8 @@ public class GameServer extends Listener {
 //    }
 
     public GameServer(String[] args, ServerLauncher serverLauncher) throws IOException {
+        parsBotSize(args);
+
         outMassegeCollection = new OutMassegeCollection(lp, server);
         server = new Server();
         register(server);
@@ -109,7 +111,7 @@ public class GameServer extends Listener {
                     Network.StockMess p = (Network.StockMess) object;
                     System.out.println("time_even:: " + p.time_even);
                     answerTemp.nomber = p.time_even;
-                    System.out.println(answerTemp);
+                  //  System.out.println(answerTemp);
                     System.out.println("______________>>>>>>>>>>>>>>>>>");
                     server.sendToUDP(connection.getID(), answerTemp); // ответ
                     if(outMassegeCollection.isExists(p.time_even)) return;
@@ -247,6 +249,14 @@ public class GameServer extends Listener {
         long raz = (time - previousStepTime);
         previousStepTime = time;
         return raz;
+    }
+
+    public Integer parsBotSize(String[] sn){
+        try {
+            return Integer.valueOf(sn[1]);
+        }catch (ArrayIndexOutOfBoundsException e){
+            return MathUtils.random(5,15);
+        }
     }
 
 
