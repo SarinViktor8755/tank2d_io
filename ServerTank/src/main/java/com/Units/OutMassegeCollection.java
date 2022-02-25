@@ -83,7 +83,7 @@ public class OutMassegeCollection {
        // m.p4 = p.hp;
         m.p6 = p.id;
         m.textM = p.getNikName();
-      //  System.out.println("!!!=========!!! NikName Bot  " + p.getNikName());
+    // System.out.println("!!!====***=====!!! NikName Bot  " + p.getNikName());
         this.addMasssage(fromidUser, m);
     }
 

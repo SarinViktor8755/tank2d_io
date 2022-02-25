@@ -100,12 +100,23 @@ public class ListPlayers {
             Collection<Player> playersLive = gameServer.getLp().getPlayers().values();
             Iterator<Player> iter = playersLive.iterator();
             while(iter.hasNext()){
-                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),iter.next());
+
+                Player p = iter.next();
+
+                System.out.println("***************");
+                System.out.println(p.getNikName()+ "     -------Live-------");
+                System.out.println("***************");
+                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),p);
             }
 
             Collection<Player> playersBot = gameServer.getMainGame().getBot().getBotList().values();
             Iterator<Player> iterBot = playersBot.iterator();
             while(iter.hasNext()){
+                Player p = iter.next();
+                System.out.println("***************");
+                System.out.println(p.getNikName()+ "     -------bot-------");
+                System.out.println("***************");
+                System.out.println();
                 gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),iterBot.next());
             }
 

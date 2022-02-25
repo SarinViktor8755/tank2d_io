@@ -342,15 +342,12 @@ public class TanksOther { /// много танков )))
         if (m.getP().tip == Heading_type.PARAMETERS_PLAYER) {
             System.out.println("<<<-- PARAMETERS_PLAYER");
             System.out.println(m.getP());
-
-
-
             //if(m.getP().p1 == -1)
             //gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMYParameters(gsp.getTank().getHp()); // перекинуть в тану
             try {
                 OpponentsTanks t = gsp.getTanksOther().listOpponents.get(m.getP().p6);
                 t.hp = m.getP().p1;
-                t.command = m.getP().p3;
+                t.command = MathUtils.random(1,2);
                 System.out.println(">>coomand :: " + m.getP().p3);
                 //    System.out.println(m.getP().textM + " nik!");
                 System.out.println("==============++++ nik ikniknik " + m.getP().textM);

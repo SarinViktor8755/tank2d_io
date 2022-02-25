@@ -10,6 +10,8 @@ import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.TreeMap;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import tanks.io.MainGame;
 
 public class MainClient {
@@ -79,6 +81,7 @@ public class MainClient {
 
 
         if (object instanceof Network.StockMess) {// полученеи сообщения
+
             //  System.out.println((((Network.StockMess) object).tip == Heading_type.MY_NIK) + "  NIK__ " + ((Network.StockMess) object).time_even);
             int nom = ((Network.StockMess) object).time_even;
             // System.out.println("!!!  " + ((Network.StockMess) object).tip);
@@ -87,11 +90,12 @@ public class MainClient {
             // client.sendUDP(((Network.StockMess) object).time_even);
             ////////////////////
             Network.StockMess ns = (Network.StockMess) object;
+           // System.out.println("          ----*------    "+ns.textM);
             if (networkPacketStock.inList.get(nom) != null) return; // проверка сообщения на повтор
             System.out.println(nom + " - incoming package number");
            // System.out.println("No!");
-            System.out.println("!!!!!!!!!_--------------------------!!!!!!!!!!!!!!!!!!!!!11" + ns.textM);
-
+          //  System.out.println("!!!!!!!!!_--------------------------!!!!!!!!!!!!!!!!!!!!!11" + ns.textM);
+                /// БЕРЕМ ПАКЕТ И ЗАОЛНЯЕМ
             PacketModel pm = networkPacketStock.getFreePacketModel();
             pm.setParametrs(ns.tip, ns.p1, ns.p2, ns.p3, ns.p4, ns.p5, ns.p6, ns.textM);
             this.networkPacketStock.inList.put(nom, pm); // доавбатиь во входящий пакеты - журнал входящих сообщений

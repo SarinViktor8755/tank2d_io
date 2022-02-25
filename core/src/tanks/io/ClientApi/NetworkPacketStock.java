@@ -27,7 +27,7 @@ public class NetworkPacketStock { /// входящие сообщения
     @SuppressWarnings("NewApi")
     public NetworkPacketStock() {
         this.packetDeque = new LinkedBlockingDeque<>();
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 150; i++) {
             this.packetDeque.add(new PacketModel());
         }
         outList = new HashMap<>();
@@ -49,7 +49,17 @@ public class NetworkPacketStock { /// входящие сообщения
     public void updatOutLint(Client client) { // проверка расылка сообщений
         //System.out.println("---");
 
-      //  if(MathUtils.randomBoolean(.005f)) System.out.println(inList);
+        if(MathUtils.randomBoolean(.005f)) {
+
+            System.out.println("=========================----------------====================");
+        ///    System.out.println(inList);
+            for (int i = 0; i < inList.size(); i++) {
+                System.out.println(inList.get(i));
+
+            }
+
+
+        }
         Integer key;
         PacketModel temp;
         Iterator<Integer> in = outList.keySet().iterator(); // отправка сообщений на сервер
