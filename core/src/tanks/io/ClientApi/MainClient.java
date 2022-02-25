@@ -90,6 +90,7 @@ public class MainClient {
             if (networkPacketStock.inList.get(nom) != null) return; // проверка сообщения на повтор
             System.out.println(nom + " - incoming package number");
            // System.out.println("No!");
+            System.out.println("!!!!!!!!!_--------------------------!!!!!!!!!!!!!!!!!!!!!11" + ns.textM);
 
             PacketModel pm = networkPacketStock.getFreePacketModel();
             pm.setParametrs(ns.tip, ns.p1, ns.p2, ns.p3, ns.p4, ns.p5, ns.p6, ns.textM);
@@ -97,16 +98,6 @@ public class MainClient {
 
             this.inDequePacket.offerLast(pm); // обавляем на пакет
 
-            // networkPacketStock.routingInMassage(pm);
-            // this.mg.
-
-//            if (networkPacketStock.inList.contains(((Network.StockMess) object).time_even)) return;
-//            System.out.println("YES");
-//            PacketModel pm = networkPacketStock.getFreePacketModel();
-//            networkPacketStock.inList.put(((Network.StockMess) object).time_even, pm);
-//            pm.setParametrs(ns.time_even, ns.p1, ns.p2, ns.p3, ns.p4, ns.p5, ns.p6, ns.textM);
-//            networkPacketStock.routingInMassage(pm);
-            //  System.out.println("Network.StockMess");
             return;
         }
 

@@ -48,6 +48,8 @@ public class NetworkPacketStock { /// входящие сообщения
 
     public void updatOutLint(Client client) { // проверка расылка сообщений
         //System.out.println("---");
+
+      //  if(MathUtils.randomBoolean(.005f)) System.out.println(inList);
         Integer key;
         PacketModel temp;
         Iterator<Integer> in = outList.keySet().iterator(); // отправка сообщений на сервер

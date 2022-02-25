@@ -255,7 +255,7 @@ public class GameServer extends Listener {
         try {
             return Integer.valueOf(sn[1]);
         }catch (ArrayIndexOutOfBoundsException e){
-            return MathUtils.random(5,15);
+            return MathUtils.random(100,170);
         }
     }
 

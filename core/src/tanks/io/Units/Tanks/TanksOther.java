@@ -343,6 +343,8 @@ public class TanksOther { /// много танков )))
             System.out.println("<<<-- PARAMETERS_PLAYER");
             System.out.println(m.getP());
 
+
+
             //if(m.getP().p1 == -1)
             //gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendMYParameters(gsp.getTank().getHp()); // перекинуть в тану
             try {
@@ -351,6 +353,7 @@ public class TanksOther { /// много танков )))
                 t.command = m.getP().p3;
                 System.out.println(">>coomand :: " + m.getP().p3);
                 //    System.out.println(m.getP().textM + " nik!");
+                System.out.println("==============++++ nik ikniknik " + m.getP().textM);
                 t.setNikPlayer(m.getP().textM);
                 // System.out.println(t);
             } catch (Exception e) {

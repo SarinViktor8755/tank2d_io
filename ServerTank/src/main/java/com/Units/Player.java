@@ -135,6 +135,7 @@ public class Player { /// все характеристики играков
 
     public void setNikName(String nikName) {
         this.nikName = nikName;
+
     }
 
     public int getCommand() {

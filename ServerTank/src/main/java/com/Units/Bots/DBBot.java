@@ -27,7 +27,6 @@ public class DBBot {
         this.directionOfFollowing = new Vector2(1, 1);
         this.dublication_rotation = new Vector2(Vector2.X);
         this.dublication_position = new Vector2(Vector2.X);
-
         this.directionOfFollowing.setAngleDeg(MathUtils.random(365));
     }
 

@@ -3,6 +3,9 @@ package main.java.com.Units;
 import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.kryonet.Connection;
 
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
@@ -10,7 +13,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import main.java.com.GameServer;
 import main.java.com.Network;
 
-public class ListPlayers  {
+public class ListPlayers {
     ConcurrentHashMap<Integer, Player> players;
     GameServer gameServer;
 
@@ -45,8 +48,8 @@ public class ListPlayers  {
 
             Vector2 velBullet = new Vector2(700, 0).setAngleDeg(obj.p3);
             gameServer.getMainGame().getBullets().addBullet(new Vector2(obj.p1, obj.p2), velBullet, obj.p4);
-            System.out.println("MY_SHOT :: "+obj.time_even);
-          //  System.out.println(obj);
+            System.out.println("MY_SHOT :: " + obj.time_even);
+            //  System.out.println(obj);
             gameServer.outMassegeCollection.createMessageDorEveryone(obj);
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
             return;
@@ -78,21 +81,35 @@ public class ListPlayers  {
             //  System.out.println("PARAMETERS_PLAYER");
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
             if (obj.p1 == null) return;
-         //   System.out.println(obj.p1 + " :::!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            //   System.out.println(obj.p1 + " :::!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
+//            if (obj.p1 > 0) {
+//                System.out.println("!!! PARAMETERS_PLAYER");
+//                if (gameServer.getLp().getPlayerForId(obj.p1).getNikName() == null) return;
+//                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(), gameServer.getLp().getPlayerForId(obj.p1));
+//
+//            } else {
+//                System.out.println("!!! PARAMETERS_BOT");
+//                //   gameServer.getMainGame().getBot().getBotList().get(obj.p1);
+//               // System.out.println("!!!=========!!! NikName Bot  " + gameServer.getMainGame().getBot().getBotList().get(obj.p1).getNikName());
+  //              gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(), gameServer.getMainGame().getBot().getBotList().get(obj.p1));
+//                System.out.println("send_param");
+//            }
 
-            if (obj.p1 > 0) {
-                System.out.println("!!! PARAMETERS_PLAYER");
-                if (gameServer.getLp().getPlayerForId(obj.p1).getNikName() == null) return;
-                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(), gameServer.getLp().getPlayerForId(obj.p1));
-
-            } else {
-                System.out.println("!!! PARAMETERS_BOT");
-               //   gameServer.getMainGame().getBot().getBotList().get(obj.p1);
-                  gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(), gameServer.getMainGame().getBot().getBotList().get(obj.p1));
-                    System.out.println("send_param");
+            Collection<Player> playersLive = gameServer.getLp().getPlayers().values();
+            Iterator<Player> iter = playersLive.iterator();
+            while(iter.hasNext()){
+                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),iter.next());
             }
+
+            Collection<Player> playersBot = gameServer.getMainGame().getBot().getBotList().values();
+            Iterator<Player> iterBot = playersBot.iterator();
+            while(iter.hasNext()){
+                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),iterBot.next());
+            }
+
+
             return;
         }
 
@@ -152,7 +169,7 @@ public class ListPlayers  {
     }
 
     public int getSize() {
-        return this.players.size() ;
+        return this.players.size();
     }
 
 
