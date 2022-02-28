@@ -160,4 +160,24 @@ public class Player { /// все характеристики играков
     public int getSize() {
         return this.inMass.size();
     }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "behaviourBot=" + behaviourBot +
+                ", status=" + status +
+                ", xp=" + xp +
+                ", yp=" + yp +
+                ", r=" + r +
+                ", rotTower=" + rotTower +
+                ", hp=" + hp +
+                ", frags=" + frags +
+                ", death=" + death +
+                ", command=" + command +
+                ", id=" + id +
+                ", tokken='" + tokken + '\'' +
+                ", nikName='" + nikName + '\'' +
+                ", inMass=" + inMass +
+                '}';
+    }
 }

@@ -18,6 +18,7 @@ public class ParticleCustum {
     ArrayDeque<Garbage> pasricalGarbage; // большие взрывы
     ArrayDeque<Explosion_Death> explosion_Death; // взрыв из тотал анигилейшен
 
+
     private Texture t;
     private Texture f;
     private Texture iron;

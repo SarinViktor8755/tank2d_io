@@ -76,11 +76,11 @@ public class OutMassegeCollection {
     public void tellParamForPlayer(int fromidUser, Player p) {
         Network.StockMess m = new Network.StockMess();
         m.tip = Heading_type.PARAMETERS_PLAYER;
-        m.p1 = p.hp;
+        m.p1 = p.id;
         m.p1 = MathUtils.random(60);
         m.p2 = p.death;
         m.p3 = p.command;
-       // m.p4 = p.hp;
+        m.p4 = p.hp;
         m.p6 = p.id;
         m.textM = p.getNikName();
     // System.out.println("!!!====***=====!!! NikName Bot  " + p.getNikName());

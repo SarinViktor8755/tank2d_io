@@ -96,28 +96,28 @@ public class ListPlayers {
   //              gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(), gameServer.getMainGame().getBot().getBotList().get(obj.p1));
 //                System.out.println("send_param");
 //            }
-
+            System.out.println("connection.getID():: " +connection.getID());
             Collection<Player> playersLive = gameServer.getLp().getPlayers().values();
-            Iterator<Player> iter = playersLive.iterator();
-            while(iter.hasNext()){
-
-                Player p = iter.next();
-
-                System.out.println("***************");
+            Iterator<Player> iterL = playersLive.iterator();
+            while(iterL.hasNext()){
+                Player p = iterL.next();
+                System.out.println("*****LIVE****");
                 System.out.println(p.getNikName()+ "     -------Live-------");
                 System.out.println("***************");
+                System.out.println();
                 gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),p);
             }
 
             Collection<Player> playersBot = gameServer.getMainGame().getBot().getBotList().values();
-            Iterator<Player> iterBot = playersBot.iterator();
-            while(iter.hasNext()){
-                Player p = iter.next();
-                System.out.println("***************");
-                System.out.println(p.getNikName()+ "     -------bot-------");
+            Iterator<Player> irBot = playersBot.iterator();
+            while(irBot.hasNext()){
+                Player p = irBot.next();
+                System.out.println(p);
+                System.out.println("*******BOT*****");
+                System.out.println(p.getNikName()+ "     -------bot-------:::: " + playersBot.size());
                 System.out.println("***************");
                 System.out.println();
-                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),iterBot.next());
+                gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),p);
             }
 
 

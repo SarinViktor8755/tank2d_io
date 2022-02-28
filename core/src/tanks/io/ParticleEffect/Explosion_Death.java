@@ -8,14 +8,14 @@ import org.graalvm.compiler.loop.MathUtil;
 
 public class Explosion_Death {
     private Vector2 position;
-    //    private float rotate;
     private float time_life;
     private int nom_texture;
+
+
 
     public Explosion_Death() {
         position = new Vector2(-150, -151);
         nom_texture = 1;
-
     }
 
     public void setParameters(float x, float y) {
@@ -32,10 +32,7 @@ public class Explosion_Death {
 
     public void update() {
         time_life -= Gdx.graphics.getDeltaTime();
-
-
     }
-
 
     public Vector2 getPosition() {
         return position;
@@ -43,8 +40,7 @@ public class Explosion_Death {
 
     public String getNameTextureRegion() {
         int r = 1 + Math.abs((int) MathUtils.map(0, 1.5f, 29, 0, time_life));
-        if (r < 1) r = 1;
-        if (r > 30) r = 30;
+        if (r < 1) r = 1;else if (r > 30) r = 30;
         System.out.println("::: - " + r);
         return String.valueOf(r);
     }
