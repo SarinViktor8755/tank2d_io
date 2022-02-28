@@ -74,6 +74,7 @@ public class OutMassegeCollection {
 
 
     public void tellParamForPlayer(int fromidUser, Player p) {
+        System.out.println("tellParamForPlayer IF:: " + fromidUser);
         Network.StockMess m = new Network.StockMess();
         m.tip = Heading_type.PARAMETERS_PLAYER;
         m.p1 = p.id;

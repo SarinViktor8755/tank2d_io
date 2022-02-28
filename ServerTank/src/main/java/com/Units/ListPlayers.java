@@ -42,6 +42,7 @@ public class ListPlayers {
 
     public void routerMassege(Connection connection, Network.StockMess obj) {
         //System.out.println("--> " + obj.time_even);
+        System.out.println("!!!!!!!!!connection" + connection.getID());
         if (obj.tip.equals(Heading_type.MY_SHOT)) {
             obj.p5 = connection.getID();
 

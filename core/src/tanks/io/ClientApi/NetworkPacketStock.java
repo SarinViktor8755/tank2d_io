@@ -68,6 +68,7 @@ public class NetworkPacketStock { /// входящие сообщения
         // System.out.println("-------------------");
         while (in.hasNext()) {
             try {
+
                 key = in.next();
                 temp = outList.get(key);
                 temp.sendId(this.myId);
@@ -77,9 +78,10 @@ public class NetworkPacketStock { /// входящие сообщения
                 client.sendUDP(temp.getP());
 
                 checkByTime(temp);
-                System.out.println(" >>> " + temp.getTime_even() + " tip: " + temp.getTip());
+
 
                 //System.out.print(" >>> "+ temp.getTime_even());
+                System.out.println(" >>> " + temp.getTime_even() + " tip: " + temp.getTip());
             } catch (ConcurrentModificationException e) {
             }
         }
