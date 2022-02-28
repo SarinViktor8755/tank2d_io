@@ -48,7 +48,7 @@ public class ListPlayers {
 
             Vector2 velBullet = new Vector2(700, 0).setAngleDeg(obj.p3);
             gameServer.getMainGame().getBullets().addBullet(new Vector2(obj.p1, obj.p2), velBullet, obj.p4);
-            System.out.println("MY_SHOT :: " + obj.time_even);
+           // System.out.println("MY_SHOT :: " + obj.time_even);
             //  System.out.println(obj);
             gameServer.outMassegeCollection.createMessageDorEveryone(obj);
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
@@ -64,14 +64,14 @@ public class ListPlayers {
         }
 
         if (obj.tip.equals(Heading_type.MY_NIK)) {
-            System.out.println("MY_NIK");
+          //  System.out.println("MY_NIK");
             players.get(connection.getID()).setNikName(obj.textM);
             // System.out.println(players.get(connection.getID()).getNikName());
             return;
         }
 
         if (obj.tip.equals(Heading_type.MY_TOKKEN)) {
-            System.out.println("MY_TOKKEN");
+           // System.out.println("MY_TOKKEN");
             players.get(connection.getID()).setTokken(obj.textM);
             //System.out.println(players.get(connection.getID()).getTokken());
             return;
@@ -101,10 +101,10 @@ public class ListPlayers {
             Iterator<Player> iterL = playersLive.iterator();
             while(iterL.hasNext()){
                 Player p = iterL.next();
-                System.out.println("*****LIVE****");
-                System.out.println(p.getNikName()+ "     -------Live-------");
-                System.out.println("***************");
-                System.out.println();
+//                System.out.println("*****LIVE****");
+//                System.out.println(p.getNikName()+ "     -------Live-------");
+//                System.out.println("***************");
+//                System.out.println();
                 gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),p);
             }
 
@@ -112,11 +112,11 @@ public class ListPlayers {
             Iterator<Player> irBot = playersBot.iterator();
             while(irBot.hasNext()){
                 Player p = irBot.next();
-                System.out.println(p);
-                System.out.println("*******BOT*****");
-                System.out.println(p.getNikName()+ "     -------bot-------:::: " + playersBot.size());
-                System.out.println("***************");
-                System.out.println();
+//                System.out.println(p);
+//                System.out.println("*******BOT*****");
+//                System.out.println(p.getNikName()+ "     -------bot-------:::: " + playersBot.size());
+//                System.out.println("***************");
+//                System.out.println();
                 gameServer.getOutMassegeCollection().tellParamForPlayer(connection.getID(),p);
             }
 
@@ -125,7 +125,7 @@ public class ListPlayers {
         }
 
         if (obj.tip.equals(Heading_type.MY_PARAMETERS)) {
-            System.out.println("!!MY_PARAMETERS " + obj.textM);
+          //  System.out.println("!!MY_PARAMETERS " + obj.textM);
             gameServer.getLp().getPlayerForId(connection.getID()).hp = obj.p1;
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
             return;

@@ -109,10 +109,10 @@ public class GameServer extends Listener {
                     //System.out.print("SM ");
 
                     Network.StockMess p = (Network.StockMess) object;
-                    System.out.println("time_even:: " + p.time_even);
+                   // System.out.println("time_even:: " + p.time_even);
                     answerTemp.nomber = p.time_even;
                   //  System.out.println(answerTemp);
-                    System.out.println("______________>>>>>>>>>>>>>>>>>");
+                    //System.out.println("______________>>>>>>>>>>>>>>>>>");
                     server.sendToUDP(connection.getID(), answerTemp); // ответ
                     if(outMassegeCollection.isExists(p.time_even)) return;
                     //if(g)p.time_even

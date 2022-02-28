@@ -115,6 +115,7 @@ public class OutMassegeCollection {
 
 
     private void addMasssage(int fromPlayer, Network.StockMess m) {
+        System.out.println("fromPlayer:: " + fromPlayer);
         OutMassege om = new OutMassege();
         int nom = m.time_even;
         while (outMassege.containsKey(nom)) nom++;
@@ -136,6 +137,7 @@ public class OutMassegeCollection {
                 checkByTime(om.getValue()); // проверка на время привышения 5 сеунды
                 if(!om.getValue().actual) continue;
                 om.getValue().sm.time_even = om.getKey();
+              //  System.out.println(om.getValue().forPlayer);
                 server.sendToUDP(om.getValue().forPlayer, om.getValue().sm);
              //   System.out.println("- " + om.getValue().sm.tip + " time_even " + om.getValue().sm.time_even + " nom  " + om.getValue().sm.nomer_pley + " forP : " + om.getValue().forPlayer+ "  "+ om.hashCode() + " ac " + om.getValue().actual + " Key" + om.getKey() );
                 // System.out.println("--->>>  " + om.getValue().sm.time_even);
@@ -162,7 +164,8 @@ public class OutMassegeCollection {
         try {
             this.outMassege.get(nom).actual = false;
         } catch (NullPointerException e) {
-            System.out.println("NPE :" + nom);
+          //  System.out.println("NPE :" + nom);
+            e.printStackTrace();
         }
 
     }

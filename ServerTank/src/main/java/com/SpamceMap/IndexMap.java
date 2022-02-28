@@ -70,7 +70,7 @@ public class IndexMap {
     private void createEllipse(JSONObject obj) {
         Ellipse e = new Ellipse(new Vector2(obj.getInt("x"), obj.getInt("y")), obj.getInt("width"), obj.getInt("height"));
         this.allfigure.add(e);
-        System.out.println("createEllipse position " + e.getPositionCenter()+"  redius " + e.getRadius() + "  redius2 " + e.getRadius2());
+       // System.out.println("createEllipse position " + e.getPositionCenter()+"  redius " + e.getRadius() + "  redius2 " + e.getRadius2());
         //  System.out.println(this.allfigure);
     }
 

@@ -41,7 +41,7 @@ public class Explosion_Death {
     public String getNameTextureRegion() {
         int r = 1 + Math.abs((int) MathUtils.map(0, 1.5f, 29, 0, time_life));
         if (r < 1) r = 1;else if (r > 30) r = 30;
-        System.out.println("::: - " + r);
+      //  System.out.println("::: - " + r);
         return String.valueOf(r);
     }
 
