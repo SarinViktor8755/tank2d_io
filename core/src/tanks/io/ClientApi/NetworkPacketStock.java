@@ -49,17 +49,16 @@ public class NetworkPacketStock { /// входящие сообщения
     public void updatOutLint(Client client) { // проверка расылка сообщений
         //System.out.println("---");
 
-        if(MathUtils.randomBoolean(.005f)) {
-
-            System.out.println("=========================----------------====================");
-        ///    System.out.println(inList);
-            for (int i = 0; i < inList.size(); i++) {
-                System.out.println(inList.get(i));
-
-            }
-
-
-        }
+//        if(MathUtils.randomBoolean(.005f)) {
+//
+//            System.out.println("=========================----------------====================");
+//        ///    System.out.println(inList);
+//            for (int i = 0; i < inList.size(); i++) {
+//                System.out.println(inList.get(i));
+//            }
+//
+//
+//        }
         Integer key;
         PacketModel temp;
         Iterator<Integer> in = outList.keySet().iterator(); // отправка сообщений на сервер
@@ -73,15 +72,15 @@ public class NetworkPacketStock { /// входящие сообщения
                 temp = outList.get(key);
                 temp.sendId(this.myId);
                 temp.getP().nomer_pley = client.getID();
+                //System.out.println("--" + outList.size());
                 if (!temp.isActual()) continue;
+                System.out.println("--____");
                 //temp.printPaket();
-                client.sendUDP(temp.getP());
-
+                client.sendUDP(temp.getP()); // отправка пакетов
                 checkByTime(temp);
 
-
                 //System.out.print(" >>> "+ temp.getTime_even());
-                System.out.println(" >>> " + temp.getTime_even() + " tip: " + temp.getTip());
+                System.out.println(" >>>>>> otpravil paket " + temp.getTime_even() + " tip: " + temp.getTip());
             } catch (ConcurrentModificationException e) {
             }
         }
@@ -120,7 +119,8 @@ public class NetworkPacketStock { /// входящие сообщения
         outList.put(pm.getTime_even(), pm);
         pm.setParametrs(Heading_type.MY_SHOT, (int) x, (int) y, (int) alignShoot, (int) (5000 + MathUtils.random(9999) + x - y), null, null, NikName.getNikName());
         //this.updatOutLint();
-        System.out.println("create Pack Shoot :: " + pm);
+        System.out.println("----------->>>> toSendMyShot" );
+
     }
 
     public void toSendMyTokken() {

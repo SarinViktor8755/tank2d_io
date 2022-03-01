@@ -161,9 +161,9 @@ public class TanksOther { /// много танков )))
 
         OpponentsTanks t;
 
-        if(MathUtils.randomBoolean(.05f)) {
-            System.out.println("=================------------================");
-            System.out.println(listOpponents);}
+//        if(MathUtils.randomBoolean(.05f)) {
+//            System.out.println("=================------------================");
+//            System.out.println(listOpponents);}
 
         for (Map.Entry<Integer, OpponentsTanks> tank : this.listOpponents.entrySet()) {
             t = tank.getValue();

@@ -67,7 +67,7 @@ public class MainClient {
         if (object instanceof Network.Answer) {// полученеи ответа
             //  System.out.println("!!!!!!!!!!Network.Answer " + ((Network.Answer) object).nomber);
             getNetworkPacketStock().markAsSent(((Network.Answer) object).nomber);
-            System.out.println("<<  " + ((Network.Answer) object).nomber + "  :: otvet");
+            System.out.println("<<----  " + ((Network.Answer) object).nomber + "  :: otvet");
             return;
         }
 
@@ -222,7 +222,7 @@ public class MainClient {
         pp.xp = (int) x;
         pp.yp = (int) y;
         pp.roy_tower = (int) rotTower;
-        client.sendUDP(pp);
+        client.sendUDP(pp); /// отправка координат
         sendOutgoingQueue();
     }
 

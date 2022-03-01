@@ -106,7 +106,7 @@ public class GameServer extends Listener {
                 }
 
                 if (object instanceof Network.StockMess) {
-                    //System.out.print("SM ");
+                    System.out.print("SM _____<<<" + connection.getID());
 
                     Network.StockMess p = (Network.StockMess) object;
                    // System.out.println("time_even:: " + p.time_even);
