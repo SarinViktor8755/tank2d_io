@@ -255,8 +255,9 @@ public class TanksOther { /// много танков )))
 ///////////////Аопросить имя игрока
                 try {
                     //   System.out.println(this.listOpponents.get(n).getNikPlayer() );
-                    if (this.listOpponents.get(n).getNikPlayer() == null)
-                           if(MathUtils.randomBoolean(.00001f)) gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendParametersOfPlayer(n);// nikname отображение
+                    //if (this.listOpponents.get(n).getNikPlayer() == null)
+                    if (this.listOpponents.get(n).getNikPlayer().length()<1)
+                           if(MathUtils.randomBoolean(.1f)) gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendParametersOfPlayer(n);// nikname отображение
                 } catch (NullPointerException e) {
                     if (((VectorUtils.getLen2(gsp.getTank().getPosition(), p.xp, p.yp) < 110_000))) {
                         gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendParametersOfPlayer(n);// nikname отображение

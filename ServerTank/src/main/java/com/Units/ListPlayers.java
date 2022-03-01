@@ -51,7 +51,7 @@ public class ListPlayers {
             gameServer.getMainGame().getBullets().addBullet(new Vector2(obj.p1, obj.p2), velBullet, obj.p4);
 
             //  System.out.println(obj);
-            gameServer.outMassegeCollection.createMessageDorEveryone(obj);
+            gameServer.outMassegeCollection.createMessageForEveryone(obj);
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
             return;
         }

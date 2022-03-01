@@ -120,7 +120,6 @@ public class NetworkPacketStock { /// входящие сообщения
         pm.setParametrs(Heading_type.MY_SHOT, (int) x, (int) y, (int) alignShoot, (int) (5000 + MathUtils.random(9999) + x - y), null, null, NikName.getNikName());
         //this.updatOutLint();
         System.out.println("----------->>>> toSendMyShot" );
-
     }
 
     public void toSendMyTokken() {

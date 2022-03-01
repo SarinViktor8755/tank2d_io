@@ -50,10 +50,10 @@ public class OutMassegeCollection {
         Network.StockMess m = new Network.StockMess();
         m.tip = Heading_type.DISCONECT_PLAYER;
         m.p1 = idDisconect;
-        this.createMessageDorEveryone(m);
+        this.createMessageForEveryone(m);
     }
 
-    public boolean isExists(int nom){
+    public boolean isExists(int nom) {
         return outMassege.containsKey(nom);
     }
 
@@ -63,14 +63,13 @@ public class OutMassegeCollection {
         m.p1 = nomPlayer;
         m.p2 = HP;
         //System.out.println(m);
-        this.createMessageDorEveryone(m);
-       // System.out.println("send HP player");
+        this.createMessageForEveryone(m);
+        // System.out.println("send HP player");
     }
 
     public void sendPlayerHP(int nomPlayer, float HP) {
-        sendPlayerHP(nomPlayer, (int)HP);
+        sendPlayerHP(nomPlayer, (int) HP);
     }
-
 
 
     public void tellParamForPlayer(int fromidUser, Player p) {
@@ -84,25 +83,21 @@ public class OutMassegeCollection {
         m.p4 = p.hp;
         m.p6 = p.id;
         m.textM = p.getNikName();
-    // System.out.println("!!!====***=====!!! NikName Bot  " + p.getNikName());
+        // System.out.println("!!!====***=====!!! NikName Bot  " + p.getNikName());
         this.addMasssage(fromidUser, m);
     }
 
 
-    public void tellAboutShootBot(int x, int y, int alignShoot, int numberShoot, int idPlayer){
+    public void tellAboutShootBot(int x, int y, int alignShoot, int numberShoot, int idPlayer) {
         Network.StockMess m = new Network.StockMess();
-
         m.tip = Heading_type.MY_SHOT;
-
         m.p1 = x;
         m.p2 = y;
         m.p3 = alignShoot;
         m.p4 = numberShoot;
         m.p5 = idPlayer;
-
         m.p6 = 111;
-
-        createMessageDorEveryone(m);
+        createMessageForEveryone(m);
         //this.outMassege.put(m.time_even, m);
 
     }
@@ -129,19 +124,19 @@ public class OutMassegeCollection {
 
     public synchronized void sendingQueue(Server server) {
         Iterator<Map.Entry<Integer, OutMassege>> omass = outMassege.entrySet().iterator();
-       // if(MathUtils.randomBoolean(.005f))System.out.println("outMassege.size :  "+outMassege.size());
+        // if(MathUtils.randomBoolean(.005f))System.out.println("outMassege.size :  "+outMassege.size());
 
         while (omass.hasNext()) {
             Map.Entry<Integer, OutMassege> om = omass.next();
             // System.out.println("  -"+om.getKey());
             if (om.getValue().actual) {
                 checkByTime(om.getValue()); // проверка на время привышения 5 сеунды
-                if(!om.getValue().actual) continue;
+                if (!om.getValue().actual) continue;
                 om.getValue().sm.time_even = om.getKey();
-              //  System.out.println(om.getValue().forPlayer);
+                                System.out.println(om.getValue().forPlayer);
                 server.sendToUDP(om.getValue().forPlayer, om.getValue().sm);
-             //   System.out.println("- " + om.getValue().sm.tip + " time_even " + om.getValue().sm.time_even + " nom  " + om.getValue().sm.nomer_pley + " forP : " + om.getValue().forPlayer+ "  "+ om.hashCode() + " ac " + om.getValue().actual + " Key" + om.getKey() );
-                // System.out.println("--->>>  " + om.getValue().sm.time_even);
+                //   System.out.println("- " + om.getValue().sm.tip + " time_even " + om.getValue().sm.time_even + " nom  " + om.getValue().sm.nomer_pley + " forP : " + om.getValue().forPlayer+ "  "+ om.hashCode() + " ac " + om.getValue().actual + " Key" + om.getKey() );
+                 System.out.println("--otpravlen->>>  " + om.getValue().sm.time_even);
             } else {
                 if (MathUtils.randomBoolean(.05f))
                     try {
@@ -165,7 +160,7 @@ public class OutMassegeCollection {
         try {
             this.outMassege.get(nom).actual = false;
         } catch (NullPointerException e) {
-          //  System.out.println("NPE :" + nom);
+            //  System.out.println("NPE :" + nom);
             e.printStackTrace();
         }
 
@@ -174,11 +169,11 @@ public class OutMassegeCollection {
     public void checkByTime(OutMassege outMassege) {
         boolean result = (System.currentTimeMillis() - outMassege.timeMomenIn) < 5_000;
         //System.out.println("---"+result);
-       // System.out.println(Math.abs(System.currentTimeMillis() - outMassege.timeMomenIn) + " !!!!!!");
+        // System.out.println(Math.abs(System.currentTimeMillis() - outMassege.timeMomenIn) + " !!!!!!");
         outMassege.actual = result;
     }
 
-    public void createMessageDorEveryone(int idExcept, Network.StockMess outMassege) { /// разослать сообщение всем кроме
+    public void createMessageForEveryone(int idExcept, Network.StockMess outMassege) { /// разослать сообщение всем кроме
         for (Integer key : lp.players.keySet()) {
             if (idExcept == key) continue;
             //         if(lp.players.get(key).status == Player.STATUS_DISCONECT) continue;
@@ -186,15 +181,15 @@ public class OutMassegeCollection {
             // System.out.println("ID = " + key + ", День недели = " +  lp.players.get(key));
         }
 
-
     }
 
-    public void createMessageDorEveryone(Network.StockMess outMassege) { /// разослать сообщение
+    public void createMessageForEveryone(Network.StockMess outMassege) { /// разослать сообщение
+        lp.players.remove(0);
         for (Integer key : lp.players.keySet()) {
-            if(lp.players.get(key).status == Player.STATUS_DISCONECT) continue;
+            if (key == 0) continue;
+            if (lp.players.get(key).status == Player.STATUS_DISCONECT) continue;
             addMasssage(key, outMassege);
-            //   System.out.print("-np ");
-            //  System.out.println("ID = " + key + ", День недели = " +  lp.players.get(key));
+            System.out.println(lp.players.keySet());
         }
         ///sendingQueue(serverGame);
     }
