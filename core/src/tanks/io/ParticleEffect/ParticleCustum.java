@@ -223,9 +223,6 @@ public class ParticleCustum {
     }
 
     public void addParticalsSmokeOne(float x, float y) {
-
-
-
         if (VectorUtils.getLen2(gps.getTank().getPosition(), x, y) > 90_000) return;
         ParticleSmoke a;
         a = this.particleDeque.pollLast();
