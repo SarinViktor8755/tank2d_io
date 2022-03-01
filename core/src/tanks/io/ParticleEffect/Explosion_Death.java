@@ -10,12 +10,13 @@ public class Explosion_Death {
     private Vector2 position;
     private float time_life;
     private int nom_texture;
-
+    private float kefm = 1;
 
 
     public Explosion_Death() {
         position = new Vector2(-150, -151);
         nom_texture = 1;
+        kefm = 1;
     }
 
     public void setParameters(float x, float y) {
@@ -23,6 +24,22 @@ public class Explosion_Death {
         nom_texture = 0;
         this.time_life = 1.5f;
 
+    }
+
+    public void setParameters(float x, float y, float kZoom) {
+        this.position.set(x, y);
+        nom_texture = 0;
+        this.time_life = 1.5f;
+        this.kefm = kZoom;
+
+    }
+
+    public float getKefm() {
+        return kefm;
+    }
+
+    public void setKefm(float kefm) {
+        this.kefm = kefm;
     }
 
     public boolean isLife() {
@@ -40,8 +57,9 @@ public class Explosion_Death {
 
     public String getNameTextureRegion() {
         int r = 1 + Math.abs((int) MathUtils.map(0, 1.5f, 29, 0, time_life));
-        if (r < 1) r = 1;else if (r > 30) r = 30;
-      //  System.out.println("::: - " + r);
+        if (r < 1) r = 1;
+        else if (r > 30) r = 30;
+        //  System.out.println("::: - " + r);
         return String.valueOf(r);
     }
 

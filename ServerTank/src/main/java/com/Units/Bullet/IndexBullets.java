@@ -57,19 +57,18 @@ public class IndexBullets {
             bullet = activeBullets.get(i);
             bullet.update(dt);
             if (checkingGoingAbroad(bullet.position.x, bullet.position.y)) {
-              //  System.out.println("вышел за границу карты x: " + bullet.position.x +"  y: " + bullet.position.y);
+                System.out.println("вышел за границу карты x: " + bullet.position.x +"  y: " + bullet.position.y);
                 freeBullet(i,bullet);
             }
         }
 
-          //  System.out.println(activeBullets.size);
+            System.out.println(activeBullets.size);
 
     }
 
     public synchronized void freeBullet(int index, Bullet bullet){
         bp.free(bullet);
         activeBullets.removeIndex(index);
-
     }
 
 

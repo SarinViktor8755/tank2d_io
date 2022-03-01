@@ -302,8 +302,9 @@ public class TanksOther { /// много танков )))
             ////////////
           //  if (m.getP().p5 != gsp.getMainGame().getMainClient().myIdConnect) {
                 gsp.getAudioEngine().pleySoundKickStick();
-                gsp.pc.addPasricalExplosion(.3f, m.getP().p1, m.getP().p2);
-                gsp.pc.addParticalsSmokeOne(m.getP().p1, m.getP().p2);
+//                gsp.pc.addPasricalExplosion(.3f, m.getP().p1, m.getP().p2);
+//                gsp.pc.addParticalsSmokeOne(m.getP().p1, m.getP().p2);
+            gsp.pc.addPasricalDeath_little(m.getP().p1, m.getP().p2,3);
                 gsp.getGameSpace().getLighting().getBuletFlash().newFlesh(m.getP().p1, m.getP().p2);
           //  }
 /////////////////

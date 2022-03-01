@@ -169,6 +169,9 @@ public class OpponentsTanks { // ОДИН ТАНК
         gsp.pc.addPasricalExplosion(.3f, smooke.x, smooke.y);
         gsp.pc.addParticalsSmokeOne(smooke.x, smooke.y);
 
+       // gsp.pc.addPasricalDeath_little(smooke.x, smooke.y,3);
+
+
 
     }
 

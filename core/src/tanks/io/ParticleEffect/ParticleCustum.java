@@ -17,6 +17,7 @@ public class ParticleCustum {
     ArrayDeque<PasricalExplosionBigParameter> pasricalExplosionsBigParam; // большие взрывы
     ArrayDeque<Garbage> pasricalGarbage; // большие взрывы
     ArrayDeque<Explosion_Death> explosion_Death; // взрыв из тотал анигилейшен
+    ArrayDeque<Explosion_Death> explosion_Death_little; // взрыв из тотал анигилейшен
 
 
     private Texture t;
@@ -38,12 +39,17 @@ public class ParticleCustum {
         this.pasricalExplosionsBigParam = new ArrayDeque<>();
         this.pasricalGarbage = new ArrayDeque<>();
         this.explosion_Death = new ArrayDeque<>(); ///  текстур взрыва тотала
+        this.explosion_Death_little = new ArrayDeque<>(); ///  текстур взрыва тотала__little
 
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 4; i++) {
             Explosion_Death ed = new Explosion_Death();
-          //  ed.setParameters(-50, -50);
             this.explosion_Death.add(ed);
+        }
+
+        for (int i = 0; i < 25; i++) {
+            Explosion_Death ed = new Explosion_Death();
+            this.explosion_Death_little.add(ed);
         }
 
         for (int i = 0; i < 350; i++) {
@@ -71,7 +77,6 @@ public class ParticleCustum {
 
     public void randerGarbage(SpriteBatch spriteBatch) {
         int k = 0;
-        float a = 0;
         for (Garbage g : pasricalGarbage) {  // частицы
             //if (!fd.isLife()) continue;
             k++;
@@ -100,9 +105,14 @@ public class ParticleCustum {
 //        i = 0;
 //        k = 0;
 
-        if (MathUtils.randomBoolean(0.05f)) {
+        if (MathUtils.randomBoolean(0.0005f)) {
             this.addPasricalDeath(gps.getTank().getPosition().x + MathUtils.random(-300,500) , gps.getTank().getPosition().y);
+
         }
+
+//        if (MathUtils.randomBoolean(0.1f)) {
+//            this.addPasricalDeath_little(gps.getTank().getPosition().x + MathUtils.random(-300,300) , gps.getTank().getPosition().y+ MathUtils.random(-300,300), MathUtils.random(2,5));
+//        }
 
 
         for (ParticleSmoke u : particleDeque) {
@@ -158,32 +168,22 @@ public class ParticleCustum {
         }
 
 
-//        for (Explosion_Death fdd : explosion_Death) {  // смерть большие (тотала)
-//
-//            if (MathUtils.randomBoolean(0.08f)) {
-//            }
-//            this.addPasricalDeath(gps.getTank().getPosition().x, gps.getTank().getPosition().y);
-//////
-////
-////            System.out.println(fd.getNameTextureRegion());
-////
-//            if (!fdd.isLife()) continue;
-//            fdd.update(this);
-//            sb.setColor(1, 1, 1, 1);
-////
-//            sb.draw(
-//                    //textureAtlasDeathExplosion.findRegion(fd.getNameTextureRegion()),
-//                    f,
-//                    fdd.getPosition().x, fdd.getPosition().y,
-//                    150, 150
-//
-//            );
-//        }
-//////////////////////
 
+        for (Explosion_Death ed : explosion_Death_little) {
+            if (!ed.isLife()) continue;
+            ed.update();
 
-
-
+            /////////////////
+            TextureAtlas.AtlasRegion tex =  textureAtlasDeathExplosion.findRegion(ed.getNameTextureRegion());
+            float xw = MathUtils.map(100,0,100,0,tex.getRegionWidth());
+            float yw = MathUtils.map(100,0,100,0,tex.getRegionHeight());
+            /////////////////
+            sb.draw(
+                    tex,
+                    ed.getPosition().x - (tex.getRegionWidth() / 2/ed.getKefm()), ed.getPosition().y - (tex.getRegionHeight() / 2/ed.getKefm()),
+                    xw/ed.getKefm(), yw/ed.getKefm()
+            );
+        }
 
         for (Explosion_Death ed : explosion_Death) {
             if (!ed.isLife()) continue;
@@ -198,13 +198,7 @@ public class ParticleCustum {
                     ed.getPosition().x - (tex.getRegionWidth() / 2), ed.getPosition().y - (tex.getRegionHeight() / 2),
                     xw, yw
             );
-
-            //System.out.println("!!!!  -- !!!!"  + textureAtlasDeathExplosion.findRegion(ed.getNameTextureRegion()).getRegionWidth());
-
-
         }
-
-
     }
 
     public void addParticalsSmoke(int quantity, float x, float y, int hp) {
@@ -229,6 +223,9 @@ public class ParticleCustum {
     }
 
     public void addParticalsSmokeOne(float x, float y) {
+
+
+
         if (VectorUtils.getLen2(gps.getTank().getPosition(), x, y) > 90_000) return;
         ParticleSmoke a;
         a = this.particleDeque.pollLast();
@@ -273,6 +270,13 @@ public class ParticleCustum {
         Explosion_Death a = this.explosion_Death.pollLast();
         a.setParameters(x, y);
         this.explosion_Death.offerFirst(a);
+    }
+
+    public void addPasricalDeath_little(float x, float y,float kefM) {
+        if (!checkViseble(x, y)) return;
+        Explosion_Death a = this.explosion_Death_little.pollLast();
+        a.setParameters(x, y,kefM);
+        this.explosion_Death_little.offerFirst(a);
     }
 
     public void addGarbage(float x, float y) {
