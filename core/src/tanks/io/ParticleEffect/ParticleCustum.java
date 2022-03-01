@@ -180,8 +180,8 @@ public class ParticleCustum {
             /////////////////
             sb.draw(
                     tex,
-                    ed.getPosition().x - (tex.getRegionWidth() / 2/ed.getKefm()), ed.getPosition().y - (tex.getRegionHeight() / 2/ed.getKefm()),
-                    xw/ed.getKefm(), yw/ed.getKefm()
+                    ed.getPosition().x - (tex.getRegionWidth() / 2/ed.getKefm()*ed.getTime_life()), ed.getPosition().y - (tex.getRegionHeight() / 2/ed.getKefm()*ed.getTime_life()),
+                    xw/ed.getKefm()*ed.getTime_life(), yw/ed.getKefm()*ed.getTime_life()
             );
         }
 

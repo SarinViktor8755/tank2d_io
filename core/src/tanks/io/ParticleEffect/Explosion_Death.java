@@ -26,12 +26,15 @@ public class Explosion_Death {
 
     }
 
+    public float getTime_life() {
+        return time_life;
+    }
+
     public void setParameters(float x, float y, float kZoom) {
         this.position.set(x, y);
         nom_texture = 0;
         this.time_life = 1.5f;
         this.kefm = kZoom;
-
     }
 
     public float getKefm() {
@@ -59,7 +62,6 @@ public class Explosion_Death {
         int r = 1 + Math.abs((int) MathUtils.map(0, 1.5f, 29, 0, time_life));
         if (r < 1) r = 1;
         else if (r > 30) r = 30;
-        //  System.out.println("::: - " + r);
         return String.valueOf(r);
     }
 
