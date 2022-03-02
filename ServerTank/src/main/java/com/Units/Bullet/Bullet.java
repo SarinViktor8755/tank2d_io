@@ -33,9 +33,10 @@ public class Bullet implements Pool.Poolable {
     }
 
     // способ задания положения и направления пуль (стрельбы)
-    public void fireBullet(float x, float xpos, float ypos, float xvel, float yvel) {
-        this.position.set(xpos, ypos);
-        this.direction.set(xvel, yvel).clamp(BULLET_SPEED,BULLET_SPEED);
+    public void fireBullet(float xp, float yp, float xv, float yv, int nom) {
+        this.position.set(xp, yp);
+        this.direction.set(xv, yv).clamp(BULLET_SPEED,BULLET_SPEED);
+        this.nom = nom;
     }
 
     // то же, что и вышеописанный метод с векторами

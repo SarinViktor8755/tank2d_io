@@ -98,7 +98,6 @@ public class OutMassegeCollection {
         m.p5 = idPlayer;
         m.p6 = 111;
         createMessageForEveryone(m);
-        //this.outMassege.put(m.time_even, m);
 
     }
 

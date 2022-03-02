@@ -53,6 +53,7 @@ public class ListPlayers {
             //  System.out.println(obj);
             gameServer.outMassegeCollection.createMessageForEveryone(obj);
             gameServer.getLp().getPlayerForId(connection.getID()).setNikName(obj.textM);
+            System.out.println(obj);
             return;
         }
 

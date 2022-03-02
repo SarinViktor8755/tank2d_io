@@ -25,12 +25,11 @@ public class IndexBullets {
         this.gameServer = gameServer;
     }
 
-    public void addBullet(Vector2 pos, Vector2 vel, int nom) {
+    public void addBullet(Vector2 pos, Vector2 vel, int nom) { // координаты, навправление, номер снаряда
         vel.clamp(BULLET_SPEED,BULLET_SPEED);
         // получи пулю из нашего бассейна
         Bullet b = bp.obtain();
         /// стреляйте пулей с того места, на которое мы нажимаем, в направлении прямо вверх
-
         b.fireBullet(pos.x, pos.y, vel.x, vel.y, nom);
         // добавьте в наш массив маркеры, чтобы мы могли получить к ним доступ в нашем методе визуализации
         activeBullets.add(b);
@@ -59,6 +58,7 @@ public class IndexBullets {
             if (checkingGoingAbroad(bullet.position.x, bullet.position.y)) {
                 System.out.println("вышел за границу карты x: " + bullet.position.x +"  y: " + bullet.position.y);
                 freeBullet(i,bullet);
+
             }
         }
 
