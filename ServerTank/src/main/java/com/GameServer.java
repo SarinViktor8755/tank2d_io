@@ -142,9 +142,10 @@ public class GameServer extends Listener {
             }
         });
 
-        mainGame = new MainGame(this,parsBotSize(args));
+        mainGame = new MainGame(this,parsBotSize(args[0]));
         startUpdateThread();
         startUpdateBehaviourThread();
+       // System.out.println("args " + parsBotSize(args[0]) + "  " + args[0]);
     }
 
     private void updateGame() { // выполняется каждые 25 мс
@@ -251,9 +252,9 @@ public class GameServer extends Listener {
         return raz;
     }
 
-    public Integer parsBotSize(String[] sn){
+    public Integer parsBotSize(String args){
         try {
-            return Integer.valueOf(sn[1]);
+            return Integer.valueOf(args);
         }catch (ArrayIndexOutOfBoundsException e){
             return MathUtils.random(100,170);
         }

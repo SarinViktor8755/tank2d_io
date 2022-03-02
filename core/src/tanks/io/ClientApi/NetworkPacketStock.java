@@ -147,7 +147,7 @@ public class NetworkPacketStock { /// входящие сообщения
     public void toSendParametersOfPlayer(int id) { // скажи парамтры игрока )) по ID
         PacketModel pm = getFreePacketModel();
         outList.put(pm.getTime_even(), pm);
-        pm.setParametrs(Heading_type.PARAMETERS_PLAYER, id, id, id, id, id, id, NikName.getNikName());
+        pm.setParametrs(Heading_type.PARAMETERS_PLAYER, null, null, null, null, null, null, NikName.getNikName());
     }
 
 

@@ -39,7 +39,6 @@ public class IndexBullets {
     }
 
     private boolean checkingGoingAbroad(float x, float y) {
-
        // System.out.println(!gameServer.getMainGame().getMapSpace().isPointInCollision(x, y));
         if (gameServer.getMainGame().getMapSpace().isPointInCollision(x, y)) return true;
         if (!gameServer.getMainGame().getMapSpace().isPointWithinMmap(x, y)) return true;
@@ -56,6 +55,7 @@ public class IndexBullets {
         for (int i = 0; i < activeBullets.size; i++) {
             bullet = activeBullets.get(i);
             bullet.update(dt);
+            System.out.println("  " + activeBullets.get(i));
             if (checkingGoingAbroad(bullet.position.x, bullet.position.y)) {
                 System.out.println("вышел за границу карты x: " + bullet.position.x +"  y: " + bullet.position.y);
                 freeBullet(i,bullet);
@@ -67,8 +67,10 @@ public class IndexBullets {
     }
 
     public synchronized void freeBullet(int index, Bullet bullet){
+        System.out.println("!!!!!!!!!!!!!!!!!!!BOOOOOOOOOOOOOOOOOOOM !!!!!!!!!!!!!!!!!!!  " + bullet.position);
         bp.free(bullet);
         activeBullets.removeIndex(index);
+
     }
 
 

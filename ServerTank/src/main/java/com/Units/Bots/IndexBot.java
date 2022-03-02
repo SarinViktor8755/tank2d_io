@@ -73,7 +73,7 @@ public class IndexBot {
     }
 
     public void updateBot(float deltaTime) {
-       // System.out.println(sizeBot+ " ---  " + botsSizeList());
+        //System.out.println(sizeBot+ " ---  " + botsSizeList());
         if (botsSizeList() < sizeBot) addBot(); // обавленеи ботов
 
         DBBot dbBot;
