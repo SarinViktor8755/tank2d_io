@@ -17,14 +17,11 @@ public class MainGame {
     HashMap<Integer, Player> allPlayers;
 
     float timer;
-
-    public MainGame(GameServer gameServer) {
-        this.bot = new IndexBot(this);
+    public MainGame(GameServer gameServer, int number_of_bots) {
+        this.bot = new IndexBot(this,number_of_bots);
         this.gameServer = gameServer;
         this.bullets = new IndexBullets(this.gameServer);
         this.mapSpace = new IndexMap();
-
-
         this.allPlayers = new HashMap<>();
     }
 

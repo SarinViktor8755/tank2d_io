@@ -26,6 +26,9 @@ public class Tank {
 
     Texture img;
     Texture img_1;
+    Texture imgr;
+    Texture img_1r;
+
     Texture target;
 
     float raz;
@@ -33,7 +36,7 @@ public class Tank {
 
     float deltaSled;
     Vector2 deltaSledVec;
-    Integer command;
+    Integer command = 1; // по умолчанию 1 синяя команда временно
     final float SPEED = 90f;
     final float SPEED_ROTATION = 180f;
 
@@ -57,8 +60,12 @@ public class Tank {
 
         img = gsp.getMainGame().getAssetManager().get("trb1.png");
         //img = gsp.getAssetsManagerGame().get("badlogic.png",Texture.class);
-
         img_1 = gsp.getMainGame().getAssetManager().get("tr.png");
+        /////////
+        imgr = gsp.getMainGame().getAssetManager().get("tbb1.png");
+        //img = gsp.getAssetsManagerGame().get("badlogic.png",Texture.class);
+        img_1r = gsp.getMainGame().getAssetManager().get("tb.png");
+
         //target = new Texture(Gdx.files.internal("target.png"));
         target = gsp.getMainGame().assetManager.get("target.png", Texture.class);
         hp = 100;
@@ -86,7 +93,7 @@ public class Tank {
 
     public void update(Vector2 directionMovementControll, boolean inTuch) {
 
-       // if (MathUtils.randomBoolean(.005f)) hp = MathUtils.random(0, 80);
+        // if (MathUtils.randomBoolean(.005f)) hp = MathUtils.random(0, 80);
         // if(MathUtils.randomBoolean(.05f)) gsp.pc.addPasricalExplosionDeath(position.x, position.y);
         upDateHpHud();
 ////////////////////////////////////
@@ -161,9 +168,7 @@ public class Tank {
                     this.position.add(direction.cpy().rotateDeg(-35).clamp(SPEED, SPEED).scl(Gdx.graphics.getDeltaTime() / 2));
                 }
                 //   System.out.println("collision");
-            } else
-
-                if (!gsp.getGameSpace().getMainCollision().isCircleCircle(position)) { // КРУГИ
+            } else if (!gsp.getGameSpace().getMainCollision().isCircleCircle(position)) { // КРУГИ
                 this.position.add(direction.cpy().rotateDeg(180).clamp(SPEED, SPEED).scl(Gdx.graphics.getDeltaTime() / 10));
                 if (gsp.getGameSpace().getMainCollision().isCircleCircle(            // КРУГИ + 45
                         getPosition().cpy().sub(getDirection().cpy().nor().scl(-5).rotateDeg(90))
@@ -209,29 +214,75 @@ public class Tank {
         if (tr.isRotation()) gsp.getAudioEngine().pleySoundOfTower();
         else gsp.getAudioEngine().stopSoundOfTower(); // звук башни
 
+
         tr.setRotation(false);
         update(directionMovement, inTouch);
 
 
-        sb.draw(img,
-                position.x - 20, position.y - 20,
-                20, 20,
-                40, 40,
-                1, 1,
-                direction.angleDeg() + 180,
-                0, 0,
-                img.getWidth(), img.getHeight(),
-                true, false);
+        if (MathUtils.randomBoolean(0.2f)) command = MathUtils.random(0, 3);
+        if (command == gsp.getTanksOther().RED_COMMAND) {
+            sb.draw(img,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    true, false);
 
-        sb.draw(img_1,
-                position.x - 20, position.y - 20,
-                20, 20,
-                40, 40,
-                1, 1,
-                direction_tower.angleDeg() + 180,
-                0, 0,
-                img.getWidth(), img.getHeight(),
-                false, false);
+            sb.draw(img_1,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction_tower.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    false, false);
+        } else if (command == gsp.getTanksOther().BLUE_COMMAND) {
+            sb.draw(imgr,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    true, false);
+
+            sb.draw(img_1r,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction_tower.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    false, false);
+        } else {
+            sb.setColor(0, 0, 0, 1);
+            sb.draw(imgr,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    true, false);
+
+            sb.draw(img_1,
+                    position.x - 20, position.y - 20,
+                    20, 20,
+                    40, 40,
+                    1, 1,
+                    direction_tower.angleDeg() + 180,
+                    0, 0,
+                    img.getWidth(), img.getHeight(),
+                    false, false);
+            sb.setColor(1, 1, 1, 1);
+        }
         // System.out.println(this.tr.getNomTarget());
 
         if (tr.getNomTarget() != null) {

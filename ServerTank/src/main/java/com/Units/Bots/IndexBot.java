@@ -28,13 +28,16 @@ public class IndexBot {
     private Vector2 temp_position_vector;
     private static BotBehavior botBehavior;
 
+    private int sizeBot = 1;
+
     main.java.com.Network.PleyerPositionNom temPP = new main.java.com.Network.PleyerPositionNom();
 
-    public IndexBot(MainGame mainGame) {
-        temp_position_vector = new Vector2();
-        botList = new HashMap<Integer, Player>();
+    public IndexBot(MainGame mainGame , int number_bots) {
+        this.temp_position_vector = new Vector2();
+        this.botList = new HashMap<Integer, Player>();
         this.mainGame = mainGame;
-        dbBots = new HashMap<>();
+        this.dbBots = new HashMap<>();
+        this.sizeBot = number_bots;
 
         this.botBehavior = new BotBehavior(botList); // поведение бота - тут вся логика  )))
         // this.allPlayers = new HashMap<Integer, TowerRotation>();
@@ -70,7 +73,8 @@ public class IndexBot {
     }
 
     public void updateBot(float deltaTime) {
-        if (botsSizeList() < 20) addBot(); // обавленеи ботов
+       // System.out.println(sizeBot+ " ---  " + botsSizeList());
+        if (botsSizeList() < sizeBot) addBot(); // обавленеи ботов
 
         DBBot dbBot;
         HashMap<Integer, Player> allpl = mainGame.getListplayerUpdate();

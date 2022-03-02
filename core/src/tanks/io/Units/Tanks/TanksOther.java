@@ -24,8 +24,8 @@ import tanks.io.Utils.VectorUtils;
 
 public class TanksOther { /// много танков )))
 
-    private static int RED_COMMAND = 1;
-    private static int BLUE_COMMAND = 2;
+    public static int RED_COMMAND = 1;
+    public static int BLUE_COMMAND = 2;
 
     private BitmapFont textFont;
 

@@ -37,7 +37,7 @@ public class GameServer extends Listener {
 //    }
 
     public GameServer(String[] args, ServerLauncher serverLauncher) throws IOException {
-        parsBotSize(args);
+
 
         outMassegeCollection = new OutMassegeCollection(lp, server);
         server = new Server();
@@ -142,7 +142,7 @@ public class GameServer extends Listener {
             }
         });
 
-        mainGame = new MainGame(this);
+        mainGame = new MainGame(this,parsBotSize(args));
         startUpdateThread();
         startUpdateBehaviourThread();
     }

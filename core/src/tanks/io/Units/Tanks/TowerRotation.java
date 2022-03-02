@@ -21,6 +21,8 @@ public class TowerRotation { /// поворот любой башни ЛОГИК
     private Vector2 direction_tower;
     private Vector2 myPosition;
 
+    private int myCommand;
+
     private boolean rotation;
 
     final float rast_to_target = 80_000; // растояние обноружения )
@@ -32,7 +34,9 @@ public class TowerRotation { /// поворот любой башни ЛОГИК
         this.myPosition = pos;
         this.listOpponents = listOpponents;
         this.timerTackt = 0;
-        rotation = false;
+        this.rotation = false;
+
+
     }
 
     public void update(float delta) {
