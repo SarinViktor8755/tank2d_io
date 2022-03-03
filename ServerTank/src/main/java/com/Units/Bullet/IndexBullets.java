@@ -35,6 +35,8 @@ public class IndexBullets {
         activeBullets.add(b);
 //        System.out.println("activeBullets.size " + activeBullets.size);
 //        System.out.println("++ bullet " + nom);
+
+        gameServer.outMassegeCollection.tellAboutShootBot((int)pos.x,(int)pos.y,(int)vel.angleDeg(),nom,nomAuthor);
     }
 
     private boolean checkingGoingAbroad(float x, float y) {
