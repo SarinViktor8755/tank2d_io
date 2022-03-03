@@ -2,6 +2,7 @@ package main.java.com.Units;
 
 
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Vector2;
 import com.esotericsoftware.kryonet.Server;
 
 import java.util.Iterator;
@@ -87,6 +88,19 @@ public class OutMassegeCollection {
         this.addMasssage(fromidUser, m);
     }
 
+    public void tellShellRupture(Vector2 pos, int nom) {
+        Network.StockMess m = new Network.StockMess();
+        m.tip = Heading_type.SHELL_RUPTURE;
+        m.p1 = (int) pos.x;
+        m.p2 = (int) pos.y;
+        m.p3 = nom; // номер снаряда
+        m.p4 = null;
+        m.p5 = null;
+        m.p6 = null;
+        m.textM = null;
+        createMessageForEveryone(m);
+    }
+
 
     public void tellAboutShootBot(int x, int y, int alignShoot, int numberShoot, int idPlayer) {
         Network.StockMess m = new Network.StockMess();
@@ -132,10 +146,10 @@ public class OutMassegeCollection {
                 checkByTime(om.getValue()); // проверка на время привышения 5 сеунды
                 if (!om.getValue().actual) continue;
                 om.getValue().sm.time_even = om.getKey();
-                                System.out.println(om.getValue().forPlayer);
+                System.out.println(om.getValue().forPlayer);
                 server.sendToUDP(om.getValue().forPlayer, om.getValue().sm);
                 //   System.out.println("- " + om.getValue().sm.tip + " time_even " + om.getValue().sm.time_even + " nom  " + om.getValue().sm.nomer_pley + " forP : " + om.getValue().forPlayer+ "  "+ om.hashCode() + " ac " + om.getValue().actual + " Key" + om.getKey() );
-                 System.out.println("--otpravlen->>>  " + om.getValue().sm.time_even);
+                System.out.println("--otpravlen->>>  " + om.getValue().sm.time_even);
             } else {
                 if (MathUtils.randomBoolean(.05f))
                     try {

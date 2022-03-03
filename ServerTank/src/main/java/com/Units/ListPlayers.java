@@ -48,7 +48,7 @@ public class ListPlayers {
             System.out.println("MY_SHOT :: " + obj.time_even);
 
             Vector2 velBullet = new Vector2(700, 0).setAngleDeg(obj.p3);
-            gameServer.getMainGame().getBullets().addBullet(new Vector2(obj.p1, obj.p2), velBullet, obj.p4);
+            gameServer.getMainGame().getBullets().addBullet(new Vector2(obj.p1, obj.p2), velBullet, obj.p4,connection.getID());
 
             //  System.out.println(obj);
             gameServer.outMassegeCollection.createMessageForEveryone(obj);

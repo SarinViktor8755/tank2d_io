@@ -14,6 +14,11 @@ public class Bullet implements Pool.Poolable {
 
     public int namber = 0;
 
+
+    public int getNamber() {
+        return namber;
+    }
+
     @Override
     public void reset() {
         //вызывается при выстреле пули

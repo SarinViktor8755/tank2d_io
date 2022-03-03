@@ -134,7 +134,7 @@ public class GamePlayScreen implements Screen {
         //////////////////////////////////////
 
         this.batch.end();
-        this.getGameSpace().getLighting().renderLights(cameraGame.getCamera());
+     //   this.getGameSpace().getLighting().renderLights(cameraGame.getCamera());
         this.controller.draw();
         this.getBatch().setColor(1, 1, 1, 1);
 

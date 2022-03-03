@@ -11,8 +11,8 @@ public class Bullet implements Pool.Poolable {
 
     public Vector2 position = new Vector2(0, 0);
     public Vector2 direction = new Vector2(0, 0);
-    private int nom;
-
+    private int nom;            // номер снаряда в сквозном списке
+    private int author_bullet; // автор снаряда
 
     @Override
     public void reset() {
@@ -33,16 +33,29 @@ public class Bullet implements Pool.Poolable {
     }
 
     // способ задания положения и направления пуль (стрельбы)
-    public void fireBullet(float xp, float yp, float xv, float yv, int nom) {
+    public void fireBullet(float xp, float yp, float xv, float yv, int nom,int idAuthor) {
         this.position.set(xp, yp);
         this.direction.set(xv, yv).clamp(BULLET_SPEED,BULLET_SPEED);
         this.nom = nom;
+        this.author_bullet = idAuthor;
     }
 
     // то же, что и вышеописанный метод с векторами
     public void fireBullet(Vector2 pos, Vector2 dir) {
         this.position = pos;
         this.direction = dir;
+    }
+
+    public int getNom() {
+        return nom;
+    }
+
+    public static int getBulletSpeed() {
+        return BULLET_SPEED;
+    }
+
+    public static void setBulletSpeed(int bulletSpeed) {
+        BULLET_SPEED = bulletSpeed;
     }
 
     @Override

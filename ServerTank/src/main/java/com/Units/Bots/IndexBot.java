@@ -51,15 +51,7 @@ public class IndexBot {
         Vector2 pos = new Vector2(botList.get(id).getXp(), botList.get(id).getYp());
         Vector2 vel = new Vector2(1, 0).setAngleDeg(botList.get(id).getRotTower());
         int nom = (int) (botList.get(id).getRotTower() + MathUtils.random(10_0000));
-        mainGame.getBullets().addBullet(pos, new Vector2(1, 1), nom);
-
-
-//        obj.p5 = connection.getID();
-//        gameServer.outMassegeCollection.createMessageDorEveryone(obj);
-        /// создаем сообщение )))
-
-        //  mainGame.getGameServer().outMassegeCollection.createMessageDorEveryone(obj);
-
+        mainGame.getBullets().addBullet(pos, new Vector2(1, 1), nom,id);
 
     }
 
@@ -88,7 +80,10 @@ public class IndexBot {
             body_rotation(deltaTime, p.getValue(), dbBot,tv1); // поворот корпуса
             tank_movement(deltaTime, p.getValue(), dbBot,tv1); // передвижение
             random_behavior(p.getValue(), dbBot); // случайные повортоы - остановка __
+
+            if(MathUtils.randomBoolean(.005f)) createBuletBot(p.getValue().getId());// test
         }
+
     }
 
     ////////////////////////

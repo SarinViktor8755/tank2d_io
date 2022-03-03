@@ -25,12 +25,12 @@ public class IndexBullets {
         this.gameServer = gameServer;
     }
 
-    public void addBullet(Vector2 pos, Vector2 vel, int nom) { // координаты, навправление, номер снаряда
+    public void addBullet(Vector2 pos, Vector2 vel, int nom,int nomAuthor) { // координаты, навправление, номер снаряда
         vel.clamp(BULLET_SPEED,BULLET_SPEED);
         // получи пулю из нашего бассейна
         Bullet b = bp.obtain();
         /// стреляйте пулей с того места, на которое мы нажимаем, в направлении прямо вверх
-        b.fireBullet(pos.x, pos.y, vel.x, vel.y, nom);
+        b.fireBullet(pos.x, pos.y, vel.x, vel.y, nom,nomAuthor);
         // добавьте в наш массив маркеры, чтобы мы могли получить к ним доступ в нашем методе визуализации
         activeBullets.add(b);
 //        System.out.println("activeBullets.size " + activeBullets.size);
@@ -61,13 +61,14 @@ public class IndexBullets {
 
             }
         }
-
-            System.out.println(activeBullets.size);
-
+           /// System.out.println(activeBullets.size);
     }
 
     public synchronized void freeBullet(int index, Bullet bullet){
         System.out.println("!!!!!!!!!!!!!!!!!!!BOOOOOOOOOOOOOOOOOOOM !!!!!!!!!!!!!!!!!!!  " + bullet.position);
+
+        gameServer.outMassegeCollection.tellShellRupture(bullet.position,bullet.getNom());
+
         bp.free(bullet);
         activeBullets.removeIndex(index);
 

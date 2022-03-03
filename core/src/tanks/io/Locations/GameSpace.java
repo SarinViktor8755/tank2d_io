@@ -1,5 +1,6 @@
 package tanks.io.Locations;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -213,6 +214,7 @@ public class GameSpace {
         if (p.y < 0) return false;
         return true;
     }
+
 
 
 }

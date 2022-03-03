@@ -41,16 +41,16 @@ public class Bullets {
         float width = 5;
         float height = 13;
         SpriteBatch sb = gpl.getBatch();
-        sb.setColor(1, 1, 1, 1);
+        sb.setColor(1, MathUtils.random(0,255),  MathUtils.random(0,255), 1);
         for (Bullet b : activeBullets) {
             if (!checkingGoingAbroad(b.position.x, b.position.y)) {
-                activeBullets.removeValue(b, true);
-                bp.free(b);
+                removeBullet(b);
                 continue;
             }
             b.update(); // update bullet
             for (int i = 0; i < MathUtils.random(1, 4); i++) {
-                if (MathUtils.randomBoolean(.5f))
+                if (MathUtils.randomBoolean(.7f))
+                    System.out.println(b.getNamber() + " - -- - -");
                     gpl.pc.addParticalsSmokeOneBullet(b.position.x + MathUtils.random(-MAX_distribution_smoke, +MAX_distribution_smoke), b.position.y + MathUtils.random(-MAX_distribution_smoke, +MAX_distribution_smoke));
             }
 
@@ -67,28 +67,38 @@ public class Bullets {
                     false, false
 
             );
-//            else
-//                    sb.draw(img,
-//                            b.position.x- MathUtils.random(-3,3) - width / 2,
-//                            b.position.y- MathUtils.random(-3,3) - height / 2,
-//                            width / 2, height / 2,
-//                            width, height,
-//                            1, 1,
-//                            b.direction.angleDeg() - 90,
-//                            1, 1,
-//                            (int) width, (int) height,
-//                            false, false
-//
-//                    );
-
 
             sb.setColor(1, 1, 1, 1);
 
         }
     }
 
+    public void removeBullet(Bullet b){
+        activeBullets.removeValue(b, true);
+        bp.free(b);
+    }
+
+    public void removeBullet(int nomBullet){
+        for (int i = 0; i < activeBullets.size; i++) {
+            if(activeBullets.get(i).namber == nomBullet){
+                bp.free(activeBullets.get(i));
+            }
+        }
+
+
+//        activeBullets.removeValue(b, true);
+//        bp.free(b);
+    }
+
     private boolean checkingGoingAbroad(float x, float y) {
         return gpl.getGameSpace().inPointLocation(x, y);
+    }
+
+
+
+
+    private boolean checkingTerrainObstacles(float x, float y) { /// н ерабочий метод
+        return gpl.getGameSpace().checkMapBorders(x, y);
     }
 
 //    private boolean checkingGoingTanks(Vector2 pos) {

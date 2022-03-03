@@ -257,7 +257,7 @@ public class TanksOther { /// много танков )))
                 try {
                     //   System.out.println(this.listOpponents.get(n).getNikPlayer() );
                     //if (this.listOpponents.get(n).getNikPlayer() == null)
-                    if (this.listOpponents.get(n).getNikPlayer().length()<1)flag_mess = true;
+                    if (this.listOpponents.get(n).getNikPlayer().length() < 1) flag_mess = true;
 
                 } catch (NullPointerException e) {
                     if (((VectorUtils.getLen2(gsp.getTank().getPosition(), p.xp, p.yp) < 110_000))) {
@@ -278,7 +278,8 @@ public class TanksOther { /// много танков )))
             //System.out.println("size IN :: "+in.size());
             if (in.size() > 0) routingInMassage(in.pollFirst()); /// тут что то не так )))
 
-            if(flag_mess)  if(MathUtils.randomBoolean(.01f)) gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendParametersOfPlayer();// nikname отображение
+            if (flag_mess) if (MathUtils.randomBoolean(.01f))
+                gsp.getMainGame().getMainClient().getNetworkPacketStock().toSendParametersOfPlayer();// nikname отображение
 
         } catch (ConcurrentModificationException e) {
         }
@@ -287,11 +288,20 @@ public class TanksOther { /// много танков )))
     public void routingInMassage(PacketModel m) {
         // System.out.println("routingInMassage  tip:" + m.getP().tip);
         if (m.getP().tip == Heading_type.MY_NIK) {
+            gsp.getGameSpace().getLighting().getBuletFlash().newFlesh(m.getP().p1, m.getP().p2);
+            return;
+        }
+
+        if (m.getP().tip == Heading_type.SHELL_RUPTURE) {
+            System.out.println("BOOOOOOOOM!!!!!!!!!!!  " + m.getP().p1+  "  "+ m.getP().p2);
+            //gsp.getBullets().
+            gsp.getBullets().removeBullet(m.getP().p3);
+            gsp.pc.addPasricalDeath_little(m.getP().p1, m.getP().p2, 2.7f);
             return;
         }
 
         if (m.getP().tip == Heading_type.MY_SHOT) {
-        //    System.out.println("Shoot " + m.getP().time_even + " np " + m.getP().nomer_pley);
+            //    System.out.println("Shoot " + m.getP().time_even + " np " + m.getP().nomer_pley);
             temp.set(m.getP().p1, m.getP().p2);
             tempr.set(0, 400);
             tempr.setAngleDeg(m.getP().p3); /// навправление
@@ -304,13 +314,13 @@ public class TanksOther { /// много танков )))
 //            if(m.getP().p6== 111) System.out.println("Boot SHOOT !!!!!!!!!!!!!!!! !!!!!!!!!!");
 
             ////////////
-          //  if (m.getP().p5 != gsp.getMainGame().getMainClient().myIdConnect) {
-                gsp.getAudioEngine().pleySoundKickStick();
+            //  if (m.getP().p5 != gsp.getMainGame().getMainClient().myIdConnect) {
+            gsp.getAudioEngine().pleySoundKickStick();
 //                gsp.pc.addPasricalExplosion(.3f, m.getP().p1, m.getP().p2);
 //                gsp.pc.addParticalsSmokeOne(m.getP().p1, m.getP().p2);
-            gsp.pc.addPasricalDeath_little(m.getP().p1, m.getP().p2,2.7f);
-                gsp.getGameSpace().getLighting().getBuletFlash().newFlesh(m.getP().p1, m.getP().p2);
-          //  }
+            gsp.pc.addPasricalDeath_little(m.getP().p1, m.getP().p2, 2.7f);
+            gsp.getGameSpace().getLighting().getBuletFlash().newFlesh(m.getP().p1, m.getP().p2);
+            //  }
 /////////////////
 
 
@@ -318,6 +328,8 @@ public class TanksOther { /// много танков )))
 
             return;
         }
+
+
 
         if (m.getP().tip == Heading_type.DISCONECT_PLAYER) {
             System.out.println("Disconect");
@@ -353,7 +365,7 @@ public class TanksOther { /// много танков )))
             try {
                 OpponentsTanks t = gsp.getTanksOther().listOpponents.get(m.getP().p6);
                 t.hp = m.getP().p1;
-                t.command = MathUtils.random(1,2);
+                t.command = MathUtils.random(1, 2);
                 System.out.println(">>coomand :: " + m.getP().p3);
                 //    System.out.println(m.getP().textM + " nik!");
                 System.out.println("==============++++ nik ikniknik " + m.getP().textM);
