@@ -78,16 +78,12 @@ public class Bullets {
         bp.free(b);
     }
 
-    public void removeBullet(int nomBullet){
+    public void removeBullet(int nomBullet){ /// пофикстить
         for (int i = 0; i < activeBullets.size; i++) {
             if(activeBullets.get(i).namber == nomBullet){
-                bp.free(activeBullets.get(i));
+//                bp.free(activeBullets.get(i));
             }
         }
-
-
-//        activeBullets.removeValue(b, true);
-//        bp.free(b);
     }
 
     private boolean checkingGoingAbroad(float x, float y) {
